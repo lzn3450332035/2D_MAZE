@@ -1,0 +1,1041 @@
+================================================================================
+2D 迷宫 · 网格回合制卡牌战斗 —— 项目工作日志
+================================================================================
+
+【本文件的定位】
+  这是本项目的单一事实来源（Single Source of Truth）：
+    · 完整项目结构（目录 / 分层 / 每个文件的职责与状态）
+    · 全部已定稿的游戏规则
+    · 全部已定稿的数值与转化系数
+    · 制作日程与批次计划
+    · 每日工作记录
+
+【维护方式】
+  当用户说「总结当天游戏日程」时：
+    1. 在「§7 每日工作记录」追加一条（日期 / 完成项 / 本轮决策 / 发现问题 / 下一步）
+    2. 同步刷新「§6 进度快照」
+
+【最后更新】见 §7 最后一条记录
+
+
+================================================================================
+§1  项目总览
+================================================================================
+
+项目名称    2D 迷宫 · 网格回合制卡牌战斗（暂定名）
+引擎版本    Unity 2022.3.62f3（C# 9.0）
+工程路径    D:\Unity\2D_MAZE\My project (3)
+代码命名空间 GameCore（例外：Assets/c# 下的旧导航脚本仍在全局命名空间）
+序列化模式  Force Text，2D 模式
+主要依赖    TextMeshPro 3.0.7、VisualScripting 1.9.4、unity.feature.2d、ugui、timeline
+程序集      无任何 .asmdef —— 全部编译进 Assembly-CSharp（编辑器脚本进 Assembly-CSharp-Editor）
+目标平台    待定（PC / 手机）
+
+核心玩法一句话
+  主角在 10 层大世界中推进，每层从 2~3 个节点（宝箱 / 战斗 / 休息 / 商店）中
+  选 1 个进入下一层；战斗在 9×9 ~ 20×20 的网格上以回合制卡牌进行。
+  关键特色：主角不能自由移动，一切位移与攻击都靠打出手牌实现。
+
+
+================================================================================
+§2  完整项目结构
+================================================================================
+
+--------------------------------------------------------------------------------
+§2.1  目录结构
+--------------------------------------------------------------------------------
+
+【需要新建的目录（15 个）】
+  Assets/Scripts/BuffSystem/BuffEffect/          Buff 行为子类（6 个）           M1
+  Assets/Scripts/Character/                      角色系统代码                    M1
+  Assets/Scripts/Faction/Behaviours/             各阵营独特行为                  M1
+  Assets/ScriptableObjects/BuffDatas/            Buff 资产                       M1
+  Assets/ScriptableObjects/Characters/           角色资产                        M1
+  Assets/ScriptableObjects/Factions/             阵营资产                        M1
+  Assets/Scripts/Obstacle/                       障碍物代码                      M2
+  Assets/ScriptableObjects/ObstacleDatas/        障碍物资产                      M2
+  Assets/ScriptableObjects/ObstacleSpawnTables/  障碍物概率表                    M2
+  Assets/ScriptableObjects/CardDatas/            卡牌资产                        M3
+  Assets/Scripts/World/                          大世界代码                      M4
+  Assets/Scripts/Player/                         玩家存档数据                    M5
+  Assets/ScriptableObjects/EquipmentDatas/       装备资产                        M5
+  Assets/Scripts/Flow/                           流程 / 场景切换                 M6
+  Assets/Scripts/UI/                             界面脚本                        M6
+
+【已存在、直接复用】
+  Assets/Scripts/Core/            Assets/Scripts/Core/Utility/
+  Assets/Scripts/Unit/            Assets/Scripts/BuffSystem/
+  Assets/Scripts/Card/            Assets/Scripts/Projectile/
+  Assets/Scripts/Battle/          Assets/Scripts/Editor/
+  Assets/Scripts/Faction/（空）   Assets/Scripts/Equipment/（空）
+  Assets/ScriptableObjects/       Assets/ScriptableObjects/ProjectileDatas/
+  Assets/Prefabs/Managers/        Assets/Prefabs/Projectiles/   Assets/Prefabs/Units/
+  Assets/Scenes/   Assets/art/   Assets/Fonts/   Assets/Card/
+
+【建议删除】
+  Assets/GameAssets/      （整组 5 个子目录，与 ScriptableObjects 功能重复）
+  Assets/png/             （空）
+  Assets/Card/c#/         （空）
+  Assets/Card/property/   （空）
+
+
+--------------------------------------------------------------------------------
+§2.2  代码分层（8 层，严格单向依赖）
+--------------------------------------------------------------------------------
+
+  铁律：第 N 层只能引用第 ≤N 层。同层互相引用允许。
+  （阵营系统与 Buff 系统均通过接口解耦，因此当前不存在任何跨层反向依赖环）
+
+  L0  定义层      Enums / CombatConst
+  L1  数据层      UnitStat / KnockbackResult / IUnitContext / CharacterProfile
+                  / BuffDataSO / ProjectileRuntimeData        ← 从 L3 上移
+  L2  计算层      MathHelper / GridMath / DamageCalculator / IProjectileModifier
+                  / FactionBehaviourBase
+  L3  配置层(SO)  ProjectileDataSO / CardDataSO / CharacterDataSO
+                  / CharacterDatabaseSO / FactionDataSO
+                  / FactionRelationTableSO / FactionBonusTableSO
+  L4  实体层      UnitAction / UnitResource / BuffBase / BuffManager / BuffEffect×6
+                  / UnitBase / Faction*Behaviour×3
+  L5  服务层      GridManager / CombatResolver / FactionManager / FactionRules
+  L6  投射物层    ProjectileBase / ProjectileSpawner / CharacterFactory
+  L7  玩法层      CardActionBase / TargetSelector / Action×4 / CardActionExecutor
+                  / TurnResolver / BattleManager / BattleInitializer
+  L8  编辑器层    CardDataSOEditor（独立程序集，可引用任意层）
+
+  关键解耦手法（已定稿）：
+    · Buff / 阵营行为只依赖接口 IUnitContext，不认识 UnitBase  → 打断循环依赖
+    · UnitBase 不主动向 GridManager 注册，改由 BattleInitializer 统一注册
+    · UnitBase 不调用 BuffManager，施加 Buff 一律由上层调用
+    · UnitBase 死亡只发事件 OnDied，具体清理由上层订阅处理
+    · DamageCalculator 全部改为纯函数（收数字、吐结果），
+      需要"这个格子能不能走"时通过 Func<Vector2Int,bool> 委托注入判断
+
+
+--------------------------------------------------------------------------------
+§2.3  M1 文件清单（52 个，批次 1~9）
+--------------------------------------------------------------------------------
+  ⚠️ 注：BuffDataSO 与 ProjectileRuntimeData 已从 L3 上移到 L1（见 §2.2）。
+     本清单中的分组位置为【原始规划】，实际分层以 §2.2 为准。
+
+  【L0 · 定义层】2 个
+    1  Core/Enums.cs                           已有·整篇重写   [已完成]
+    2  Core/CombatConst.cs                     已有·整篇重写   [已落地·待补]
+
+  【L1 · 数据层】4 个
+    3  Unit/UnitStat.cs                        已有·改         [待落地]
+    4  Core/KnockbackResult.cs                 新建
+    5  BuffSystem/IUnitContext.cs              新建（原 IBuffHost 改名 + 扩容）
+    6  Character/CharacterProfile.cs           新建
+
+  【L2 · 计算层】5 个
+    7  Core/Utility/MathHelper.cs              已有·改         [已完成]
+    8  Core/Utility/GridMath.cs                已有·改（纯函数化）
+    9  Core/DamageCalculator.cs                新建
+   10  Projectile/IProjectileModifier.cs       新建
+   11  Faction/FactionBehaviourBase.cs         新建
+
+  【L3 · 配置层】9 个
+   12  BuffSystem/BuffDataSO.cs                已有·改
+   13  Projectile/ProjectileRuntimeData.cs     已有·改
+   14  Projectile/ProjectileDataSO.cs          已有·改
+   15  Card/CardDataSO.cs                      已有·改
+   16  Character/CharacterDataSO.cs            新建
+   17  Character/CharacterDatabaseSO.cs        新建
+   18  Faction/FactionDataSO.cs                新建
+   19  Faction/FactionRelationTableSO.cs       新建
+   20  Faction/FactionBonusTableSO.cs          新建
+
+  【L4 · 实体层】14 个
+   21  Unit/UnitAction.cs                      已有·改
+   22  Unit/UnitResource.cs                    新建（能量 / 体力 / 复活次数）
+   23  BuffSystem/BuffBase.cs                  已有·整篇重写
+   24  BuffSystem/BuffManager.cs               新建（纯 C# 类，每单位一个）
+   25  BuffSystem/BuffEffect/BuffStun.cs       新建
+   26  BuffSystem/BuffEffect/BuffBurn.cs       新建
+   27  BuffSystem/BuffEffect/BuffPoison.cs     新建
+   28  BuffSystem/BuffEffect/BuffFreeze.cs     新建
+   29  BuffSystem/BuffEffect/BuffControlResist.cs 新建
+   30  BuffSystem/BuffEffect/BuffInvincible.cs 新建
+   31  Unit/UnitBase.cs                        已有·整篇重写
+   32  Faction/Behaviours/FactionPlayerBehaviour.cs   新建
+   33  Faction/Behaviours/FactionMonsterBehaviour.cs  新建
+   34  Faction/Behaviours/FactionNeutralBehaviour.cs  新建
+
+  【L5 · 服务层】4 个
+   35  Core/GridManager.cs                     已有·重构（支持多格单位）
+   36  Core/CombatResolver.cs                  已有·整篇重写
+   37  Faction/FactionManager.cs               新建
+   38  Faction/FactionRules.cs                 新建
+
+  【L6 · 投射物层】3 个
+   39  Projectile/ProjectileBase.cs            已有·整篇重写
+   40  Projectile/ProjectileSpawner.cs         新建
+   41  Character/CharacterFactory.cs           新建
+
+  【L7 · 玩法层】10 个
+   42  Card/CardActionBase.cs                  已有·改
+   43  Card/TargetSelector.cs                  新建
+   44  Card/ActionDamage.cs                    新建
+   45  Card/ActionKnockback.cs                 新建
+   46  Card/ActionSpawnProjectile.cs           新建
+   47  Card/ActionChainLightning.cs            新建
+   48  Card/CardActionExecutor.cs              新建
+   49  Battle/TurnResolver.cs                  新建
+   50  Battle/BattleManager.cs                 新建
+   51  Battle/BattleInitializer.cs             新建
+
+  【L8 · 编辑器层】1 个
+   52  Editor/CardDataSOEditor.cs              新建
+
+
+--------------------------------------------------------------------------------
+§2.4  后续里程碑文件清单（M2 ~ M6）
+--------------------------------------------------------------------------------
+
+  【M2 · 战斗地图与障碍物】13 个
+    Core/MapGrid.cs                  Core/BattleGridGenerator.cs
+    Core/LineOfSight.cs              （视野遮蔽，虚体功能障碍物用）
+    Obstacle/ObstacleDataSO.cs       Obstacle/ObstacleBase.cs
+    Obstacle/ObstacleWall.cs         Obstacle/ObstacleBreakable.cs
+    Obstacle/ObstacleCover.cs        Obstacle/ObstacleTrap.cs
+    Obstacle/ObstacleFieldSolid.cs   Obstacle/ObstacleFieldVirtual.cs
+    Obstacle/ObstacleSpawnTableSO.cs
+
+  【M3 · 牌库与手牌】5 个
+    Card/CardInstance.cs             Card/DeckManager.cs
+    Card/HandManager.cs              Card/CardLibrary.cs
+    Core/Utility/CollectionHelper.cs
+
+  【M4 · 大世界】9 个
+    World/WorldConst.cs              World/WorldNodeData.cs
+    World/WorldMapGenerator.cs       World/WorldMapManager.cs
+    World/RewardHandler.cs           World/RestHandler.cs
+    World/ShopHandler.cs             World/ChestDataSO.cs
+    World/DropTableSO.cs
+
+  【M5 · 玩家数据与装备】7 个
+    Player/PlayerProfile.cs          Player/HomeVault.cs
+    Player/RunInventory.cs           Player/SaveSystem.cs
+    Equipment/EquipmentDataSO.cs     Equipment/EquipmentManager.cs
+    Equipment/EquipmentSetSO.cs
+
+  【M6 · 流程与 UI】数量待定
+    Flow/GameFlowManager.cs          Flow/SceneLoader.cs
+    UI/…（各面板脚本）
+    Scenes/BattleScene.unity         Scenes/WorldMapScene.unity   Scenes/HomeScene.unity
+
+
+================================================================================
+§3  规则定稿
+================================================================================
+
+--------------------------------------------------------------------------------
+§3.1  战斗胜负与流程
+--------------------------------------------------------------------------------
+  · 可控角色：只有主角 1 人（无同伴编队）
+  · 普通关卡胜利 = 双路径：
+      A. 消灭全部敌人 → 奖励更优（经验 / 掉落更多）
+      B. 主角走到出口 → 视为主动撤退 / 逃跑，奖励较少
+  · BOSS 关胜利 = 必须击败特定 BOSS 目标
+  · 失败 = 主角死亡且复活次数耗尽
+  · 回合上限：无
+  · 复活机制：
+      - 复活次数抵消"最后一次致命伤害"
+      - 原地复活，Buff 不清空，血量与能量恢复到受伤前的值
+      - 复活后获得「无敌」Buff 1 回合（持续到主角下一个回合结束），该期间免疫其他伤害
+      - 每次进入战斗地图时刷新复活次数
+      - 初始复活次数 0，可通过装备 / 饰品增加
+
+--------------------------------------------------------------------------------
+§3.2  资源系统（能量 / 体力）
+--------------------------------------------------------------------------------
+  · 卡牌消耗由卡牌自身数值决定：
+      - 普通物理技能卡：只消耗体力
+      - 属性法术技能卡：同时消耗体力 + 能量
+  · 判定规则：体力与能量任一不足 → 整张卡无法打出（AND 逻辑）
+  · 战士基准值：能量 初始10 / 上限10 / 每回合+2
+                体力 初始5  / 上限10 / 每回合+3
+  · 初始值与上限均随角色不同而改变，上限可被装备更改
+  · 战斗开始时资源恢复到【初始值】（不是上限）
+  · 资源管理独立于 UnitStat，由 UnitResource（纯 C# 类，挂在 UnitBase 上）负责
+  · 【待确认】回合结束时未用完的资源是否保留到下一回合
+
+--------------------------------------------------------------------------------
+§3.3  卡牌
+--------------------------------------------------------------------------------
+  · 伤害公式：实际伤害 = 施法者 PhysicalAtk × 卡牌倍率
+  · 卡牌类别（CardType）由 CardEffectTag 自动推导，不在 Inspector 手填：
+      只有 Damage          → Attack
+      只有非战斗类标签      → Status
+      只有 Block           → Defense
+      两类及以上共存        → Mix
+  · 效果标签（可叠加位标志）：Damage / Heal / Shield / Draw / ApplyBuff / Move
+                              / Purge / Block
+  · 动作种类（CardActionKind）：DirectDamage / Knockback / SpawnProjectile
+                                / ChainLightning
+  · 状态技能包含：回血、加盾、抽牌、纯上 Buff、移动、驱散
+  · 防御卡：本回合抵挡一次攻击，或抵挡一次控制效果（击退 / 眩晕）
+      - 「挡伤害」与「挡控制」是两个独立层，各自有次数
+      - 受到攻击时消耗挡伤害层；受到控制效果时消耗挡控制层
+      - 格挡成功 → 不计算伤害、不受 Buff，相当于消耗掉对方一次命中
+      - 投射物被格挡后【继续穿透】，只是该目标没受伤
+      - 持续 1 回合，本回合内未触发则失效
+  · 稀有度：普通 / 史诗 / 传说
+  · 卡牌可升级，消耗金币；不同稀有度的消耗与提升幅度不同
+      需在资产中预先配置：升级提升哪个数值、每次提升多少
+  · 打出的卡进入弃牌堆
+  · 混合卡 = 上述任意两种及以上共存（纯 UI 分类）
+
+--------------------------------------------------------------------------------
+§3.4  牌库与手牌
+--------------------------------------------------------------------------------
+  · 手牌上限 10 张（可被装备更改）
+  · 出战牌堆上限 25 张（可被装备更改），允许重复卡
+  · 背包备用 5 张（同一轮游戏内可带入）
+  · 每回合抽 3 张；补牌只补到手牌上限为止
+  · 牌堆抽空时，把弃牌堆洗回牌堆
+  · 「保留」机制：部分装备提供保留点数，每 1 点保留 = 每回合固定 1 张牌不进入弃牌堆
+  · 构筑规则：出战 25 张中必须至少包含 2 张移动卡（或含移动效果的混合卡）
+      每回合抽牌不保证手牌里有移动牌
+
+--------------------------------------------------------------------------------
+§3.5  Buff 系统
+--------------------------------------------------------------------------------
+  架构：配置与逻辑分离
+    · BuffDataSO —— 只读配置（策划填表），运行时绝不修改
+    · BuffBase   —— 运行实例，持有 CurrentDuration / CurrentStack
+    · BuffManager —— 每个单位一个（纯 C# 类），只做调度，不写具体效果
+    · BuffEffect 子类 —— 每种 Buff 一个文件，负责自己的效果
+
+  BuffType：Stun / Burn / Poison / Freeze / ControlResist / Invincible
+  BuffRemoveRule：TurnDuration / Permanent
+
+  各 Buff 行为：
+    Stun          固定 1 回合不能行动；可叠加延长；结束时目标 +50 控制抗性点
+    Burn（灼烧）  多实例，每实例独立倒计时；每实例造成单层固定点数伤害
+                  总伤害 = 层数 × 单层伤害（自然结果，不是重复计算）
+    Poison（中毒）永久多层，可致死；按最大生命百分比扣血
+    Freeze（冰冻）不能行动；免疫眩晕与击退；直接取消已有眩晕；
+                  回合倒计时自动解除
+    ControlResist 控制抗性加成
+    Invincible    复活后施加，持续到主角下一个回合结束，免疫一切伤害
+
+  跨 Buff 联动（统一放在 BuffManager.AddBuff 内，不放子类）：
+    · 施加冰冻 → 清除目标身上的灼烧
+    · 施加灼烧且目标已冰冻 → 触发破冰（伤害翻倍）并取消冰冻
+
+  回合结束处理顺序（由 TurnResolver 统一驱动）：
+    1. 所有单位的 Buff 结算（先扣血，再移除到期）
+    2. 处理死亡（网格注销 + Buff 清空）
+    3. 重算阵营效果（因为存活人数可能变化）
+    4. 刷新阵营关系 / 加成缓存
+    5. 检查胜负
+
+--------------------------------------------------------------------------------
+§3.6  阵营系统
+--------------------------------------------------------------------------------
+  三方关系（对称，一条表项管双向）：
+    Ally        友军   —— 可使用友方技能，不可被选为敌方目标
+    Cooperative 合作   —— 不可使用友方技能，也不可被选为敌方目标；
+                          但会自行出牌攻击敌军
+    Enemy       敌军   —— 可被选为敌方目标
+
+  关系矩阵（行 = A 视角，列 = B）：
+               玩家      怪物      中立
+      玩家     Ally     Enemy   Cooperative
+      怪物     Enemy    Ally    Enemy
+      中立     Cooperative Enemy  Ally
+
+  设计要点：
+    · 彻底替代原来的 bool isPlayerTeam / TeamId 枚举
+    · 单位挂载 FactionDataSO 引用，不再用团队布尔值
+    · 关系表对称（一条表达双方），但【加成可非对称】：
+        例：A 打 B 伤害 +20%，B 打 A 暴击率 +10% → 两条表项
+    · 因此分成两张表：FactionRelationTableSO（关系）+ FactionBonusTableSO（加成）
+    · 阵营效果在【回合结束】结算一次 + 战斗开始算一次初始值
+    · 阵营行为既包含数值加成，也包含行为加成（对应 FactionBehaviourBase 的虚方法）
+    · 未注册的 BuffType 返回 null 并报错，不静默兜底
+    · 胜负判定：
+        合作单位或友军死亡 → 不影响玩家收益
+        敌军全灭但合作单位仍存活 → 算玩家赢
+        玩家全灭但合作单位仍存活 → 算玩家输
+    · 阵营SO绝不持有 Unit 引用（运行时状态不写入 SO）
+
+--------------------------------------------------------------------------------
+§3.7  移动系统
+--------------------------------------------------------------------------------
+  核心：主角不能自由移动，一切位移靠卡牌
+    · 本回合没抽到移动卡 → 该回合无法移动
+    · 出战牌堆必须至少含 2 张移动卡（构筑约束）
+
+  朝向：
+    · 持久状态，WASD 随时可改，不消耗任何资源
+    · 影响：投射物发射方向、范围技能的实际范围
+    · 固定方向 / 相对位置的卡 → 用 WASD 改朝向
+    · 传送 / 手动选目标的卡   → 用鼠标点击选择
+    · 只有上下左右四方向；斜向效果通过"多段路径"实现
+
+  移动卡：
+    · 内容不是单纯距离，而是【移动路径】，例：向前 2 格 → 向右 1 格
+    · 不同卡牌的体力消耗与路径不同
+
+  路径碰撞规则：
+    · 遇障碍物 → 停在障碍前一格
+    · 若第 1 格就是障碍物 → 整张卡无法打出
+    · 遇友军 → 可以穿过
+    · 遇敌军 → 停在敌军前一格
+    · 移动经过陷阱 → 触发
+    · 移动经过实体功能障碍物 → 触发；撞上则停在它前一格
+
+  传送：
+    · 可以穿过障碍物
+    · 目标格（大单位为其 2×2 / 3×3 范围）内不得有：
+        障碍物、实体功能障碍物、掩体 —— 任一存在即无法使用
+    · 陷阱与虚体功能障碍物不阻挡传送
+    · 目标格有单位 → 无法使用
+    · 传送距离范围按卡牌配置
+
+  多格单位（精英 2×2 / BOSS 3×3）：
+    · 锚点 = 占用矩形的【左下角】；网格原点也在左下角（Y 轴向上）
+    · 移动方案采用【方案 C】：逐格推进，某一步受阻就停在能走的最远处
+      （与普通单位"停在障碍前一格"的规则保持一致）
+    · 停下也算消耗了体力
+    · 已知代价：永远进不了比自身窄的通道；移动 N 格要循环 N 次判定
+    · 移动时把占用范围沿方向扩展 1 格，检查新增的那一条，再缩减旧条带
+    · 整个单位的投影范围内有障碍物 → 无法移动
+    · 可以直接改变方向，不是旋转；2×2 与 3×3 差异只有占位大小
+
+  击退：
+    · 会触发陷阱
+    · 撞实体功能障碍物也触发撞墙眩晕判定
+    · 单位被击退到障碍前一格，无法被击退到障碍上
+    · 判定方式：即将移动到下一格时先检查，若下一格是障碍则停止并触发撞墙眩晕
+    · 位移卡只能对自己使用
+
+--------------------------------------------------------------------------------
+§3.8  网格与出生
+--------------------------------------------------------------------------------
+  · 地图尺寸：9×9 / 12×12 / 16×16 / 20×20（随机，但进入前可在大世界查看）
+  · 网格原点：左下角（与 Unity 世界坐标一致，Y 轴向上）
+  · 主角固定出生在【正下方中间】
+  · 出口固定出现在【正上方中间】
+  · 地怪随机出生在地图空位，但主角周围 7×7（49 格）内禁止出现敌怪
+  · 当主角存在阵营时：友军出生在下半范围，敌军出生在上半范围
+  · 连通性保证：只作为生成约束，保证玩家可以走到出口
+      推荐算法：先随机游走铺一条"保底通路"，再在通路之外的格子按密度放障碍，
+                最后 BFS 校验，不可达则从保底通路上清障
+
+--------------------------------------------------------------------------------
+§3.9  障碍物
+--------------------------------------------------------------------------------
+  六大类：
+    Wall          墙     —— 绝对不可破坏，阻挡移动与投射物
+    Breakable     可破坏 —— 有血量，按 BreakableTier 限定破坏条件
+    Cover         掩体   —— 有朝向；正面挡投射物，背面不挡；有血量，可破碎
+    Trap          陷阱   —— 不阻挡移动，踩上触发，触发后变空地
+    FieldSolid    实体功能障碍物 —— 阻挡移动，在周围范围产生效果
+    FieldVirtual  虚体功能障碍物 —— 不阻挡移动，踩上触发；触发后冷却或消失
+
+  可破坏层级（BreakableTier，7 级，先按伤害属性筛选，再看伤害形式）：
+    L1 PhysicalOrMagic  物理或法术都能破
+    L2 MagicOnly        仅法术
+    L3 PhysicalOnly     仅物理
+    L4 BurnOnly         仅灼烧
+    L5 IceOnly          仅寒冰
+    L6 EliteOrBossOnly  仅精英或 BOSS 单位
+    L7 BossOnly         仅 BOSS 单位
+    注：范围伤害 / 单体伤害 / 投射物伤害【都计入】，形式不影响层级判定
+
+  掩体细节：
+    · 从背面打 → 无法挡住伤害与投射物
+    · 从正面打 → 掩体【代替承受伤害】（会掉血直至破碎）
+    · 近战攻击与法术范围伤害都能对掩体造成伤害，但只有投射物会被阻挡
+
+  视野：
+    · 障碍物不阻挡对敌怪的判定（只是美术上有遮挡图像）
+    · 但部分【虚体功能障碍物】可实现玩法上的遮蔽：站在其上的敌怪不可见
+      → 不可被选中、不可被指定为目标，但【范围技能仍可打到】
+      → 给一个半透明轮廓作为提示
+
+  障碍物出现概率（按尺寸的密度，先按此定，后续再调）：
+    9×9   81 格  12%  ≈10 个
+    12×12 144 格 15%  ≈22 个
+    16×16 256 格 18%  ≈46 个
+    20×20 400 格 20%  ≈80 个
+
+    各类占比：墙 35% / 可破坏 25% / 掩体 15% / 陷阱 15%
+              / 实体功能障碍物 7% / 虚体功能障碍物 3%
+
+    可破坏 7 级占比按层数递进：
+                1-3 层  4-6 层  7-9 层  10 层
+      L1          50%     30%     15%     10%
+      L2          20%     25%     25%     20%
+      L3          20%     25%     25%     20%
+      L4           5%     10%     15%     15%
+      L5           5%      8%     13%     15%
+      L6           0%      2%      5%     10%
+      L7           0%      0%      2%     10%
+
+  硬性约束（必须写进生成器，不能只靠概率）：
+    · 出生点 7×7 内禁止任何障碍物
+    · 出口格禁止障碍物
+    · 陷阱不得放在出生点 / 出口
+    · 生成后必须 BFS 校验出生点 → 出口可达
+    · 实体功能障碍物不得形成完全封闭的圈
+
+--------------------------------------------------------------------------------
+§3.10  大世界
+--------------------------------------------------------------------------------
+  · 共 10 层；第 10 层固定为 BOSS 对战关；通关即游戏通关
+  · 每层生成 2~3 个节点，玩家选 1 个即进入下一层（不能回上一层）
+  · 节点类型：宝箱 / 战斗 / 休息 / 商店（商店也占节点名额）
+  · 节点先做线性排列，后续再 UI 美化
+  · 玩家能看到节点简易信息：类型 + 战斗时的地图尺寸
+  · 预留随机事件拓展位
+
+  宝箱（5 种独立类型 + 一套随机掉落表；大世界图标不区分类型）：
+    普通宝箱   随机 1~2 项：50 金币 + 1 卡牌 / 50 金币 + 1 装备
+                            / 100 金币 / 1 张低品质低阶卡牌
+    卡牌宝箱   3~5 张卡牌
+    装备宝箱   2~3 件装备
+    史诗宝箱   三类都出且品质较高，或随机出二阶卡牌，金币更多
+    传说宝箱   三类都出、品质更高，金币与阶数更高
+    品质只有：普通 / 史诗 / 传说；史诗与传说宝箱三种品质都有概率出，只是概率不同
+
+  商店：随机卖 3 种物品（卡牌或装备），品质随机，品质与阶数越高越贵
+
+  「家」——主枢纽：
+    · 一轮游戏内不能换角色，只有在家里才能切换角色
+    · 通关或主动撤退后，带着本轮获得的卡牌与金币回家
+    · 游戏失败时，本轮获得的卡牌与金币全部丢失（家中仓库不动）
+    · 进入休息回合时可以选择提前撤退，带着已有卡牌与金币回家保存
+    · 只有在【休息】和【家】中可以保存游戏
+    · 在家中可花费金币升级卡牌
+    · 每次进入新一轮游戏时，至多选择 25 张出战 + 5 张备用（共 30 张）
+    · 界面区分：家中用「仓库」（永久收藏，分装备页与卡牌页）
+                进入游戏后用「背包」（本轮携带，装备页 + 5 张备用卡）
+
+--------------------------------------------------------------------------------
+§3.11  奖励与成长
+--------------------------------------------------------------------------------
+  · 战斗胜利给额外金币；击杀敌怪掉落金币，并有概率掉落装备
+  · 金币用途：升级卡牌、商店购物
+  · 杀光全部敌人通关的经验 > 走到出口通关的经验
+  · 角色会升级，主要靠打怪获得经验，通关也给经验
+  · 升级所需经验随等级线性变化
+  · 每个角色的经验条独立；卡牌与牌库共通；装备共通
+  · 具体经验数值与掉落率后期调整
+
+--------------------------------------------------------------------------------
+§3.12  装备
+--------------------------------------------------------------------------------
+  · 槽位：头 / 胸 / 脚 / 饰品 × 3（共 6 个）
+  · 三个饰品栏无种类区分
+  · 装备加成在【战斗开始时】生效
+  · 装备共通（不属于任何角色）
+  · 有套装效果
+  · 装备不能强化升级
+  · 装备可扩展出战牌库上限、可提供「保留」点数、可增加复活次数
+  · 装备如果要影响战斗（如攻击附带灼烧），最干净的做法是实现
+    IProjectileModifier 接口（该接口已在 L2 设计好）
+
+
+================================================================================
+§4  数值定稿
+================================================================================
+
+--------------------------------------------------------------------------------
+§4.1  即时伤害 · 分段减伤（物理与元素共用同一套）
+--------------------------------------------------------------------------------
+  分段规则（抗性每点提供的减伤百分比逐段递减）：
+     0 ~  20 : 每点 1.00%      ResistReduce_0_20    = 0.01f
+    20 ~  50 : 每点 0.80%      ResistReduce_20_50   = 0.008f
+    50 ~ 100 : 每点 0.50%      ResistReduce_50_100  = 0.005f
+   100 ~ 150 : 每点 0.20%      ResistReduce_100_150 = 0.002f
+   150 ~ 230 : 每点 0.15%      ResistReduce_150_230 = 0.0015f
+
+  抗性上限        ResistMaxThreshold   = 230（超出部分完全不计）
+  最低承伤乘子    MinDamageMultiplier  = 0.09f
+
+  公式：最终伤害 = max(1, round(baseDamage × 承伤乘子 × 暴击倍率))
+
+  峰值验算（抗性 = 230）：
+      20 × 1.00% = 20%
+      30 × 0.80% = 24%
+      50 × 0.50% = 25%
+      50 × 0.20% = 10%
+      80 × 0.15% = 12%
+      ─────────────────
+      合计减伤 = 91%
+      承伤乘子 = 1 − 0.91 = 0.09   ← 与 MinDamageMultiplier 必须相等
+
+  完整减伤曲线：
+      抗性    总减伤    承伤乘子   1000 伤害实际打到
+        0       0%      1.000        1000
+       20      20%      0.800         800
+       50      44%      0.560         560
+      100      69%      0.310         310
+      150      79%      0.210         210
+      200    86.5%      0.135         135
+      230      91%      0.090          90
+
+  ⚠️ 改任何一段系数后必须同步修改 MinDamageMultiplier，
+     否则乘子会"截断"公式，把某一段的减伤曲线压平。
+     （CombatConst 末尾有编辑器自检会自动报错提醒）
+
+--------------------------------------------------------------------------------
+§4.2  眩晕（减法公式）
+--------------------------------------------------------------------------------
+  眩晕系数        单位 = 百分点（0~100，100 = 基础必中）
+  控制抗性        单位 = 点
+  转换系数        ControlResistConvertPerPoint = 0.8（每点减免 0.8 个百分点）
+  抗性上限        ControlResistMax = 125
+                  125 × 0.8 = 100 个百分点 → 完全免疫
+
+  公式：概率% = clamp(眩晕系数 − 控制抗性点 × 0.8, StunChanceMin, StunChanceMax)
+  判定：Random.value × 100 < 概率%
+
+  眩晕持续        StunDurationTurn = 1 回合
+  眩晕结束        PostStunControlResistAdd = +50 控制抗性点（= 后续减免 40 个百分点）
+  撞墙眩晕系数    WallStunCoefficient = 100
+
+  验算表（眩晕系数固定 100）：
+      目标抗性   减免(百分点)   最终概率
+         0           0          100%  必中
+        25          20           80%
+        50          40           60%
+       100          80           20%
+       125         100            0%  完全免疫
+
+--------------------------------------------------------------------------------
+§4.3  延迟伤害（灼烧 / 中毒 / 破冰）
+--------------------------------------------------------------------------------
+  三者【共用】同一份延迟抗性点数与同一个 20 点上限，
+  但各自的转换系数与数学模型不同。⚠️ 延迟伤害【没有保底】，减免 ≥ 伤害时扣 0 血。
+
+  延迟抗性上限    DelayResistMax = 20
+
+  灼烧（固定点数伤害）→ 减法
+      每点抗性减免 1 点灼烧伤害
+      BurnResistConvertPerPoint = 1f
+      公式：实际 = max(0, 每层伤害 × 层数 − 抗性 × 1)
+      例：抗性 20 → 减免 20 点灼烧伤害（因此每层灼烧伤害需 > 20 才有意义）
+
+  中毒（百分比伤害）→ 减法
+      每点抗性减免 1 个百分点中毒伤害
+      PoisonResistConvertPercentPerPoint = 1f
+      公式：实际% = max(0, 中毒% × 层数 − 抗性 × 1%)，实际伤害 = round(MaxHp × 实际%)
+      例：中毒 5% × 2 层 = 10%，抗性 6 → 4%；抗性 10 → 完全免疫
+
+  破冰（百分比爆发）→ 乘法（与上面两者不同，这是有意的）
+      破冰基础 IceBreakBasePercent = 0.2（最大生命 20%）
+      每点抗性减免 IceBreakResistReducePerPoint = 0.025（2.5%）
+      冰冻 + 灼烧触发时 IceBreakBurnTriggerMulti = 2（翻倍）
+      公式：实际% = 20% × (1 − 抗性 × 2.5%)，带灼烧时 ×2
+      例：抗性 0 → 20%；抗性 10 → 15%；抗性 20 → 10%（带灼烧 20%）
+
+  三者对"抗性 20 点"的敏感度对比（有意的不对称）：
+      灼烧（若每层 30 点）  减免 67%
+      中毒（若 10%）        减免 100%（完全免疫）
+      破冰（20% 基础）      减免 50%
+
+  ⚠️ 为什么中毒必须按百分点减而不是按点减：
+     中毒是"最大生命的百分比伤害"。若错误地按点数减 6 点：
+       目标 100 血  → 中毒 10 点，减 6 点 = 4 点  → 减免 60%
+       目标 1000 血 → 中毒 100 点，减 6 点 = 94 点 → 减免 6%
+       目标 10000 血 → 中毒 1000 点，减 6 点 = 994 点 → 减免 0.6%
+     同样的抗性对血少的单位减免 60%、对血多的只有 0.6%，完全破坏平衡。
+     按百分点减则无论血量多少减免比例恒定。
+
+--------------------------------------------------------------------------------
+§4.4  暴击（加法 + 软上限）
+--------------------------------------------------------------------------------
+  【设计意图】玩家侧一律用"点数"显示，战斗侧才转成实际倍率，
+             让升级加点的成长感更平滑可观。
+
+  暴击率（加法）：
+      单位       百分点（0~100）
+      公式       实际暴击率% = clamp(角色点数 × 转化系数 + 卡牌点数 × 转化系数, 0, 100)
+      转化系数   CritRatePointToPercent = 1（1 点 = 1 个百分点）
+      上限       CritRateMax = 100（超过即必定暴击）
+
+  暴击倍率（加法 + 软上限）：
+      转化系数   CritDamagePointToMultiplier = 0.05（1 点 = 0.05 暴击倍率）
+      软上限     CritDamageSoftCapPoint = 30（前 30 点全额生效）
+      超出折算   CritDamageOverCapRatio = 0.5（超出部分只算一半）
+      基础值     DefaultCritMultiplier = 1.5（永远参与计算的基础项，不是可替换的默认值）
+
+      公式：
+        总点数     = 角色点数 + 卡牌点数
+        全额部分   = min(总点数, 30)
+        超出部分   = max(0, 总点数 − 30)
+        有效点数   = 全额部分 + 超出部分 × 0.5
+        实际倍率   = 1.5 + 有效点数 × 0.05
+
+      验算表：
+        总点数  有效点数  倍率加成   最终倍率   边际收益
+           0        0      0        1.50        —
+          10       10    +0.50      2.00     每点 +0.05
+          20       20    +1.00      2.50     每点 +0.05
+          30       30    +1.50      3.00     ← 软上限拐点
+          40       35    +1.75      3.25     每点 +0.025
+          50       40    +2.00      3.50     每点 +0.025
+         100       65    +3.25      4.75     每点 +0.025
+
+      例（用户给的）：基础 1.5 + 角色 0.2 + 卡牌 0.2 = 1.9 倍
+                     即：角色 4 点 + 卡牌 4 点 = 8 点 → 1.5 + 0.4 = 1.9
+
+  ⚠️ 该设计的影响：软上限自然引导玩家分散加点，而不是无脑堆一项。
+     两个参数（30 / 0.5）都是单点常量，可随时按实测数据调整。
+
+--------------------------------------------------------------------------------
+§4.5  其他战斗常量
+--------------------------------------------------------------------------------
+  击退抗性减半阈值      KnockbackResistHalveThreshold = 0.5
+                        （抗性 > 0.5 时，击退格数减半并向上取整）
+  闪电连锁最大距离      LightningChainMaxManhattanDistance = 3（曼哈顿）
+  分裂子投射物体积      ProjectileSplitScale = 0.85
+  投射物最大存活步数    ProjectileMaxSteps = 200（安全阀，防边界反复反弹）
+  默认暴击倍率          DefaultCritMultiplier = 1.5
+
+--------------------------------------------------------------------------------
+§4.6  卡牌与牌库常量
+--------------------------------------------------------------------------------
+  手牌上限              10（可被装备更改）
+  出战牌堆上限          25（可被装备更改）
+  背包备用              5
+  每回合抽牌数          3
+  出战牌堆最少移动卡    2
+  单回合抽牌不保证有移动牌
+
+--------------------------------------------------------------------------------
+§4.7  单位与体型
+--------------------------------------------------------------------------------
+  普通单位   1×1    UnitSize.Small = 1
+  精英       2×2    UnitSize.Elite = 2
+  BOSS       3×3    UnitSize.Boss  = 3
+  枚举值直接等于边长，可直接当数字用
+
+
+================================================================================
+§5  制作日程
+================================================================================
+
+--------------------------------------------------------------------------------
+§5.1  施工批次表（每批结束都必须 0 error）
+--------------------------------------------------------------------------------
+  批次 1  (L0)  Enums.cs → CombatConst.cs                            2 个
+  批次 2  (L1)  UnitStat → KnockbackResult → IUnitContext
+                → CharacterProfile → BuffDataSO
+                → ProjectileRuntimeData                              6 个  [已完成]
+  批次 3  (L2)  MathHelper → GridMath → DamageCalculator
+                → IProjectileModifier → FactionBehaviourBase         5 个  [已完成]
+  批次 4  (L3)  ProjectileDataSO → CardDataSO → CharacterDataSO
+                → CharacterDatabaseSO → FactionDataSO
+                → FactionRelationTableSO → FactionBonusTableSO      7 个  [进行中]
+  批次 5  (L4)  UnitAction → UnitResource → BuffBase → BuffManager
+                → BuffEffect×6 → UnitBase → Faction*Behaviour×3      14 个
+  批次 6  (L5)  GridManager → CombatResolver → FactionManager
+                → FactionRules                                       4 个
+  批次 7  (L6)  ProjectileBase → ProjectileSpawner → CharacterFactory 3 个
+  批次 8  (L7)  CardActionBase → TargetSelector → Action×4
+                → CardActionExecutor → TurnResolver → BattleManager
+                → BattleInitializer                                 10 个
+  批次 9  (L8)  CardDataSOEditor                                     1 个
+                                                             合计 52 个
+
+  每个文件都可以单独写、单独编译（阵营与 Buff 的接口解耦已消除所有依赖环）。
+
+--------------------------------------------------------------------------------
+§5.2  里程碑时间线
+--------------------------------------------------------------------------------
+  M1  战斗内核          批次 1~9，52 个文件         ← 当前所处阶段
+  M2  战斗地图与障碍物  13 个文件（地图生成 / 连通性 / 6 类障碍物）
+  M3  牌库与手牌        5 个文件（DeckManager / HandManager / 能量体力）
+  M4  大世界            9 个文件（节点生成 / 宝箱 / 休息 / 商店 / 奖励）
+  M5  玩家数据与装备    7 个文件（存档 / 仓库 / 背包 / 装备 / 套装）
+  M6  流程与 UI         数量待定（场景切换 / 各界面 / 3 个场景）
+
+--------------------------------------------------------------------------------
+§5.3  节奏估算
+--------------------------------------------------------------------------------
+  当前节奏：约每轮 1~2 个文件（含逐行讲解与编译验证）
+  M1 预计：26 ~ 52 轮
+  M2 ~ M6 预估：按同等节奏，另外约 60 ~ 90 轮
+
+  每个文件的交付形式：
+    1. 给出完整最终代码
+    2. 逐行 / 逐块讲解：实际效果、为什么这样写、常见坑、拓展用法
+    3. 用户落地 → 回 Unity 确认 0 error
+    4. 确认后进入下一个文件
+    5. 每次落地后全项目扫描一次报错源（Unity 只报第一个错误）
+
+
+================================================================================
+§6  进度快照
+================================================================================
+
+【当前阶段】M1 战斗内核 · 批次 1~3 全部完成（22 个脚本，0 error），进入批次 4
+
+【已完成】
+  L0  [OK] Core/Enums.cs                  16 个枚举（含用户补充的 AllEnemy）
+  L0  [OK] Core/CombatConst.cs            全部常量 + 2 个编辑器自检（注释已补全）
+  L1  [OK] Unit/UnitStat.cs               Shield / CritRatePoint / CritDamagePoint（点数制）
+  L1  [OK] Core/KnockbackResult.cs        struct + Stay() 静态工厂
+  L1  [OK] BuffSystem/IUnitContext.cs     零依赖接口，打破 Buff / 阵营循环依赖
+  L1  [OK] Character/CharacterProfile.cs  class，委托注入 AddExp + 安全阀
+  L1  [OK] BuffSystem/BuffDataSO.cs       从 L3 上移；addControlResistPoint（int）
+  L1  [OK] Projectile/ProjectileRuntimeData.cs  从 L3 上移；含 maxSplitCount / 暴击点数 / 击退
+  L2  [OK] Core/Utility/MathHelper.cs     KnockbackHalveCeil / ClampZero
+  L2  [OK] Core/Utility/GridMath.cs       纯函数化；删 3 个脏方法；修斜向；加方向转换
+  L2  [OK] Core/DamageCalculator.cs       ★核心：分段减伤 / 暴击点数制 / 眩晕 / 击退 / 延迟伤害
+  L2  [OK] Projectile/IProjectileModifier.cs  ref 参数接口
+  L2  [OK] Faction/FactionBehaviourBase.cs    abstract + virtual，5 个钩子
+  --- 已清理 ---
+      Projectile/ProjectileConfigSO.cs    已删除（孤儿文件，0 引用）
+      Core/CombatResolver.cs              编译安全（逻辑全注释，批次 6 重写）
+
+【进行中】
+  已落地：Projectile/ProjectileDataSO.cs
+  已给出：Card/CardDataSO.cs（已重构为"动作列表"模型）
+          Card/CardActionBase.cs、CardSkin.cs、CardFrameTableSO.cs、CardView.cs
+  本轮给出：Card/CardActions/ 下 11 个动作数据类
+
+【下一步（按顺序）】
+  [ ] 落地 11 个动作数据类 → 之后就能开始真正配卡
+  [ ] Character/CharacterDataSO.cs
+  [ ] Character/CharacterDatabaseSO.cs
+  [ ] Faction/FactionDataSO.cs
+  [ ] Faction/FactionRelationTableSO.cs
+  [ ] Faction/FactionBonusTableSO.cs
+  [ ] 之后进入批次 5（L4 实体层）
+
+【⚠️ 卡牌系统架构变更（本轮确认，§3.3 旧描述部分失效，以本节与 §7 为准）】
+  · 一张卡 = N 个动作（CardActionBase 的 SO 资产），每个动作自带 1 个属性
+    例：火球+毒球 = [DamageAction(火)] + [DamageAction(毒)]
+  · 删除 CardActionKind 枚举（动作类型由 SO 子类表达）
+  · 目标（targetType / maxTargetCount）从卡牌下移到每个动作
+  · 卡牌类别 CardType / 卡框 CardFrameStyle 全部由动作自动推导
+  · 物理 = 无属性层；元素覆盖物理（火+物理 → 火框）
+  · 升级：稀有度决定可升级项数量（普通1/史诗2/传说3），等级上限（5/7/10）
+          升级项 = { 属性, 目标动作, 每级增量 }，允许重复选同一属性
+  · 动作资产可复用；升级【不修改 SO】，进度记在 CardInstance 上
+
+【已确认但尚未落地到代码的决策】
+  · 阵营系统：8 个文件，关系表对称 + 加成表非对称，阵营效果回合结束结算
+  · 复活机制：抵消致命伤害 + 无敌 Buff 持续到主角下一回合结束
+  · 多格单位：锚点左下角，移动方案 C（逐格推进，受阻即停，停下算消耗体力）
+  · 暴击：率与倍率都是加法；倍率用点数制（1 点 = 0.05）、软上限 30 点 / 超出按 50%
+  · 能量体力由 UnitResource 独立管理（不放进 UnitStat）
+  · 加点系统：是否需要区分"基础值"与"加点值"（方案 A / B）—— 待批次 4 决定
+
+【已知环境问题】
+  [!] 本会话 PowerShell 不可用：
+      SetNamedSecurityInfoW failed (Win32 5): grantWrite(D:\Unity\2D_MAZE\My project (3))
+      即沙箱无法给工作区授予写权限，所有 pwsh 命令都会失败。
+      读 / 写 / 搜索类工具正常。
+      诊断脚本需要以非受限方式运行，但该权限升级已被拒绝，故【未诊断、未修复】。
+
+
+================================================================================
+§7  每日工作记录
+================================================================================
+
+【记录规则】
+  当用户说「总结当天游戏日程」时，在下方追加一条，格式：
+
+    ### YYYY-MM-DD
+    **完成的文件**：
+    **本轮决策**：（规则 / 数值的新增或变更）
+    **发现的问题**：
+    **下一步**：
+
+  追加后同步刷新 §6 进度快照。
+
+--------------------------------------------------------------------------------
+### 【初始化】建立项目工作日志
+--------------------------------------------------------------------------------
+**完成的文件**：
+  · 建立本文件，写入完整项目结构、规则定稿、数值定稿、制作日程与进度快照
+  · 汇总此前全部会话中确认的设计决策（M1 蓝图 52 个文件、8 层分层、各类规则与数值）
+
+**本轮决策**：
+  · 工作日志的定位：项目单一事实来源，含"结构与细节"+"日程"+"每日记录"
+  · 维护方式：用户说「总结当天游戏日程」时更新本文件
+  · 存放位置：工作区内 D:\Unity\2D_MAZE\My project (3)\worklog.txt
+                 （原指定路径 D:\worklog.txt 在工作区之外，写入需要额外授权，故改放工作区内）
+
+**发现的问题**：
+  · 本会话 PowerShell 沙箱无法给工作区授予写权限（Win32 5 拒绝访问），
+    所有 pwsh 命令失败，无法执行任何命令行操作
+  · CombatConst.cs 落地时漏掉了分段减伤的头部注释（约 20 行）
+  · CombatResolver.cs 仍是空壳（逻辑已全部注释），批次 6 才能重写
+
+**下一步**：
+  · 落地 Unit/UnitStat.cs 的"点数制"最终版
+  · 批次 2 剩余三个文件：KnockbackResult / IUnitContext / CharacterProfile
+
+--------------------------------------------------------------------------------
+### 【进度】批次 1 ~ 3 全部完成，进入批次 4
+--------------------------------------------------------------------------------
+**完成的文件**（22 个脚本，编译 0 error）：
+  · L0：Enums / CombatConst
+  · L1：UnitStat / KnockbackResult / IUnitContext / CharacterProfile
+        / BuffDataSO / ProjectileRuntimeData
+  · L2：MathHelper / GridMath / DamageCalculator / IProjectileModifier
+        / FactionBehaviourBase
+
+**本轮决策**：
+  · 分层调整：BuffDataSO 与 ProjectileRuntimeData 由 L3 上移到 L1
+    原因：IProjectileModifier（L2）依赖 ProjectileRuntimeData，
+          若后者留在 L3 就构成 L2 反向依赖 L3。二者本质都是"数据"
+          （一个是模板，一个是快照），放数据层名实相符。
+  · 对象池：投射物池推迟到批次 7，改用 Unity 内置 ObjectPool<T>
+            （collectionCheck 能查出"重复归还"这类手写池查不出的 bug）；
+            敌怪池【不做】—— 10 个重置点、按类型分池，收益仅约 72ms/局。
+  · worklog 存放位置定在工作区内，避免越出工作区导致写权限被拒。
+
+**发现的问题**：
+  · GridMath 旧版的三处脏方法（IsOutOfBounds / IsWallObstacle / GetUnitBase）
+    让 L2 反向依赖 L5 —— 已删除（grep 确认零调用者，删除无风险）
+  · GetDirectionNormalized 旧版会返回斜向（(2,1) → (1,1)），
+    与"格子重合判定命中"冲突 —— 已改为只返回四方向（主分量优先）
+  · CombatConst 落地时注释被拆散，导致"结尾注释跑到文件开头" —— 已修正
+  · PowerShell 在本环境不可用（沙箱授权失败），无法做命令行验证
+
+**下一步**：
+  · 批次 4（L3 配置层）7 个文件：
+    ProjectileDataSO → CardDataSO → CharacterDataSO → CharacterDatabaseSO
+    → FactionDataSO → FactionRelationTableSO → FactionBonusTableSO
+
+--------------------------------------------------------------------------------
+### 【架构重构】卡牌 = 动作列表（本轮定稿）
+--------------------------------------------------------------------------------
+**核心变更**：卡牌从"1 个动作 + 1 个属性"重构为"N 个动作，每个动作自带属性"
+
+**动作体系**（每个动作 = 一个可复用 SO 资产）
+  CardActionBase（抽象 SO）
+    · element / targetType / maxTargetCount
+    · abstract GetSupportedUpgrades()   → 决定该动作能升哪些属性
+    · abstract GetFunctionKind()        → Damage / Move / Defense / Support
+    · abstract Execute(ctx)             → ⏳ 批次 7 补
+  11 个子类：DamageAction / ProjectileAction / ChainLightningAction
+              MoveAction / BlockDamageAction / BlockControlAction / ShieldAction
+              / ApplyBuffAction / HealAction / DrawAction / PurgeAction
+
+**删除**：CardActionKind 枚举（类型即分类）
+
+**卡框推导规则**（8 种风格 × 3 稀有度 = 24 张）
+  ① 收集所有动作的"真元素"（排除 Physical）并去重
+  ② ≥2 个 → Mixed
+  ③ 1 个  → 该元素框（元素优先于功能）
+  ④ 0 个  → 按功能：只有 1 种 → Move/Defense/PhysicalAttack；≥2 种 → Mixed
+  验证：火+物理 → 火框；火+毒 → 混合；移动+防御 → 混合；移动+伤害 → 混合
+
+**升级系统**
+  · 可升级项数量：普通 1 / 史诗 2 / 传说 3；等级上限：普通 5 / 史诗 7 / 传说 10
+  · 可升级属性共 17 种（含投射物的 反弹/穿透/分裂 次数）
+  · 升级项 = { 属性, 目标动作（费用类填 null）, 每级增量 }
+  · 允许重复选同一属性
+  · 只能选卡牌现有动作支持的项目（靠 GetSupportedUpgrades 过滤）
+  · 升级【不修改 SO】，进度记在 CardInstance 上
+
+**卡面 UI**（三层 → 两层）
+  · 去掉属性图标层（属性由卡框颜色/花纹表达，不做 Color 染色）
+  · 保留：① 卡框（自动查表）+ ② 卡牌背景（主插画）
+  · 文本：描述 / 体力费用 / 能量费用
+  · 卡框尺寸不统一，各自固定；命名 frame_{style}_{rarity}.png
+
+**下一步**：落地 11 个动作数据类 → 然后继续 CharacterDataSO 等 5 个 L3 文件
+
+--------------------------------------------------------------------------------
+### 【规则细化】目标正交拆分 / 范围形状 / 护盾改 Buff / 投射物动画
+--------------------------------------------------------------------------------
+**1. 目标系统：拆成两个正交维度（删除 ActionTargetType 与 CardActionKind）**
+  维度①打谁：TargetFaction = Enemy / Ally / Self / All
+  维度②怎么选：TargetSelectMode = ManualSingle / ManualMulti / NearestN / Area
+  → 「随机敌人」已确认不要
+  → 单个动作的字段：faction / selectMode / selectCount / aoeShape / aoeDirection / aoeSize
+
+**2. 范围形状（仅 selectMode = Area 生效，均以角色朝向为基准）**
+  · Line 直线：沿方向逐格延伸 aoeSize 格
+       Forward = (0,1)(0,2)(0,3)…
+       ForwardRight = (1,1)(2,2)(3,3)…（纯对角线）
+       ForwardLeft  = (-1,1)(-2,2)(-3,3)…
+  · Cone 扇形：第 i 行宽 2i-1，共 aoeSize 行，尖端在施法者
+  · Rectangle 矩形：以「前方第 1 格」为中心，(2*aoeSize+1)²，边长恒为奇数
+  · 升级都是 AoESize +1（三种形状对 aoeSize 的解释不同）
+
+**3. 护盾改 Buff（删除 UnitStat.Shield）**
+  · BuffType 加 Shield = 6
+  · 走【多实例】机制（与灼烧完全相同）：层数 = 实例数，每实例独立倒计时
+  · BuffDataSO 加 shieldPerStack（每实例护盾值）
+  · IUnitContext 加 TotalShield（受击先扣盾再扣血）
+  · 吸收伤害时优先扣最早到期的实例
+
+**4. 可升级属性扩到 24 项**
+  新增：KnockbackGrids / KnockbackChance / StunCoeff / ChainRange
+        / BuffApplyChance / BuffDuration（仅 TurnDuration 型）/ AoESize
+  保底项：DrawCount —— 驱散这类无数值可升的卡，升级 = 多摸一张
+  → CardDataSO 加 baseDrawCount 字段
+
+**5. 投射物（改为「逐格移动 + 播放动画」，取消速度参数）**
+  · 不设 moveSpeed，每格耗时用固定常量
+  · 投射物必须完全消失后，才执行下一张卡 / 下一个动作
+  · 穿透：直接穿过去 | 反弹：撞墙后瞬间反向（无过渡动画）
+  · 分裂：母弹动画结束 → 生成 2 个子弹各自播动画
+  · 推论：CardActionBase.Execute 必须改成 IEnumerator（异步执行链）
+
+**下一步**：给 CardActionBase 新版 + 11 个动作类最终版 + CardDataSO 补 baseDrawCount
+
+--------------------------------------------------------------------------------
+### 【卡牌体系定稿】设计期资产 / 卡池 / 动作内嵌 / 实例
+--------------------------------------------------------------------------------
+**1. 卡牌的定位**
+  · 卡牌创建逻辑只服务于【设计期】；游戏运行时无法创建新卡牌
+  · 所有卡牌都是做好的 CardDataSO 资产，运行时只读
+  · 卡牌带「编号 cardId」+「卡池归属」；抽卡 = 抽编号 → 查库 → 建实例
+
+**2. 卡池系统（池记卡牌）**
+  · CardPoolSO 持有 CardDataSO[] + 各稀有度权重
+  · 分类：Basic / Treasure / Shop / Elite / Boss（+ 预留拓展位）
+  · 初始卡组【不入池】，固定 21 张：
+      5 基础移动 + 5 基础防御 + 3 基础回血 + 8 基础攻击
+  · 部分敌怪有特殊掉落：死亡时单独抽 bonusCardPool + 固定物品
+
+**3. 动作采用方案 A：内嵌（不再用 SO 资产）**
+  · 放弃「动作 = 可复用资产」方案（无法让每张卡数值独立）
+  · 一个 CardActionData 类装下 11 种动作的全部字段，靠 type 区分
+  · 逻辑集中放在 CardActionExecutor（批次 7），数据每卡独立
+  · 三方案对比：A（内嵌）/ B（一卡一资产）/ D（SerializeReference 多态）
+    → A 唯一同时满足 自由添加 / 逻辑共享 / 数值独立，且零编辑器开发量
+
+**4. 运行时实例 CardInstance**
+  · { cardId, level, upgradePickCounts[] }
+  · 同一张 CardDataSO 可创建多张实例，升级各自独立
+  · 升级增量 = deltaPerLevel × pickCounts[i]（不是按 level 算）
+  · 存档只存实例，不存卡牌内容
+
+**5. 目标选择（定稿）**
+  · 两个正交维度：TargetFaction（打谁）× TargetSelectMode（怎么选）
+  · ManualSingle 按 faction 合并（一张卡内同阵营只选一次）
+  · ManualMulti 每个动作各选一次（数量可能不同，不缓存）
+  · 目标中途死亡 → 静默跳过该动作
+  · 「随机敌人」不保留
+
+**6. 落地顺序（待执行，共 11 步）**
+  ① Enums.cs           删 3 个旧枚举 + 加 8 个新枚举 + BuffType 加 Shield
+  ② UnitStat.cs        删 Shield 字段
+  ③ BuffDataSO.cs      加 shieldPerStack
+  ④ IUnitContext.cs    加 TotalShield
+  ⑤ CardActionData.cs  新建（方案 A 的核心）
+  ⑥ CardSkin.cs        新建（原 CardMessage）
+  ⑦ CardFrameTableSO.cs 新建
+  ⑧ CardDataSO.cs      整篇替换（含 CardInstance / CardUpgradeEntry）
+  ⑨ CardView.cs        新建（原 CardCreater）
+  ⑩ 删 CardActionBase.cs / CardMessage.cs / CardCreater.cs
+  ⑪ 配一张测试卡验证全链路
+
+================================================================================
+（本文件结束）
+================================================================================

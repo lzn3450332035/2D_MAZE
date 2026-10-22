@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd840423d2a722a45aac4fc36302a23c, type: 3}
+  m_Name: CardFrameTable
+  m_EditorClassIdentifier: 
+  rows:
+  - style: 0
+    common: {fileID: 21300000, guid: d5dbc30076e14cf4bac4ed01ab9a948d, type: 3}
+    epic: {fileID: 21300000, guid: dd2db53b934373a47a8373126728ba8e, type: 3}
+    legendary: {fileID: 21300000, guid: 4314f0a69e87cb94484f5d365585a621, type: 3}
+  - style: 1
+    common: {fileID: 21300000, guid: 94520b4d499ea6f41b4545a28ef18dd7, type: 3}
+    epic: {fileID: 21300000, guid: eecb19f28cdc8cc48b1c21a93f370b25, type: 3}
+    legendary: {fileID: 21300000, guid: 8e40a740142486a40aced5b2a5663bcd, type: 3}
+  - style: 2
+    common: {fileID: 21300000, guid: af34e11f0559dfb40b20bc71865511b7, type: 3}
+    epic: {fileID: 21300000, guid: 64d2070cf9e1dae4783371c83878d698, type: 3}
+    legendary: {fileID: 21300000, guid: 3998a5a2ccde98d4cbf9fb803e79dea9, type: 3}
+  - style: 3
+    common: {fileID: 21300000, guid: 5812d42568c4eab449094b368af35eed, type: 3}
+    epic: {fileID: 21300000, guid: 0e3f7eed5babba14a82c6ab6b87e1e18, type: 3}
+    legendary: {fileID: 21300000, guid: faa7cc32ebdaf194eba459f85f709c46, type: 3}
+  - style: 4
+    common: {fileID: 21300000, guid: 5363937b60ab90c4ebf34da785766e98, type: 3}
+    epic: {fileID: 21300000, guid: 72abc6353ed1aa14ab1b3edf7a41a5a7, type: 3}
+    legendary: {fileID: 21300000, guid: 1ab5aedbf7b8395448becc9932b668ef, type: 3}
+  - style: 5
+    common: {fileID: 21300000, guid: fb9b7a1af17d0324e82ca0fa1ae1411c, type: 3}
+    epic: {fileID: 21300000, guid: cd4faf5d0b2d6524bb9613c4ab434033, type: 3}
+    legendary: {fileID: 21300000, guid: f47e7d4887af15a45a5ec6f15f0e497f, type: 3}
+  - style: 6
+    common: {fileID: 21300000, guid: 2fd2fa891c611844ca72f0966cf83456, type: 3}
+    epic: {fileID: 21300000, guid: d28513fbce0452e42b2cbef6f60ddd09, type: 3}
+    legendary: {fileID: 21300000, guid: b246db1a276a00c4e9881ab107213d27, type: 3}
+  - style: 7
+    common: {fileID: 21300000, guid: 7c18a8f03531a504bb3cf7404ee4a49a, type: 3}
+    epic: {fileID: 21300000, guid: e59ac79d3a301ce4b8402cad1fe0a0e9, type: 3}
+    legendary: {fileID: 21300000, guid: 74903b5bc7d4d7d4db6237c71a0f6952, type: 3}

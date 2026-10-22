@@ -1,0 +1,520 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Unity\\2D_MAZE\\My project (3)\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|D:\\Unity\\2D_MAZE\\My project (3)\\assets\\scripts\\faction\\factionrelationtableso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\faction\\factionrelationtableso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|D:\\Unity\\2D_MAZE\\My project (3)\\assets\\scripts\\faction\\factiondataso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\faction\\factiondataso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|d:\\unity\\2d_maze\\my project (3)\\assets\\scripts\\buffsystem\\buffmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\buffsystem\\buffmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|d:\\unity\\2d_maze\\my project (3)\\assets\\scripts\\buffsystem\\buffbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\buffsystem\\buffbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|D:\\Unity\\2D_MAZE\\My project (3)\\assets\\scripts\\unit\\unitaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\unit\\unitaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|D:\\Unity\\2D_MAZE\\My project (3)\\assets\\scripts\\faction\\factionbonustableso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\faction\\factionbonustableso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:1:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|d:\\unity\\2d_maze\\my project (3)\\assets\\scripts\\unit\\unitresource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:1:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\unit\\unitresource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:2:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|d:\\unity\\2d_maze\\my project (3)\\assets\\scripts\\unit\\unitresource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:2:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\unit\\unitresource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|D:\\Unity\\2D_MAZE\\My project (3)\\assets\\scripts\\character\\characterdatabaseso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\character\\characterdatabaseso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|D:\\Unity\\2D_MAZE\\My project (3)\\assets\\scripts\\character\\characterdataso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\character\\characterdataso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|D:\\Unity\\2D_MAZE\\My project (3)\\assets\\scripts\\card\\carddataso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\card\\carddataso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|D:\\Unity\\2D_MAZE\\My project (3)\\assets\\scripts\\card\\cardskin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\card\\cardskin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Core\\Enums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|solutionrelative:Assets\\Scripts\\Core\\Enums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|D:\\Unity\\2D_MAZE\\My project (3)\\assets\\scripts\\card\\cardactiondata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\card\\cardactiondata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|D:\\Unity\\2D_MAZE\\My project (3)\\assets\\scripts\\card\\cardview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\card\\cardview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|D:\\Unity\\2D_MAZE\\My project (3)\\assets\\scripts\\card\\cardframetableso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\card\\cardframetableso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|D:\\Unity\\2D_MAZE\\My project (3)\\assets\\scripts\\buffsystem\\iunitcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\buffsystem\\iunitcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\BuffSystem\\BuffDataSO.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|solutionrelative:Assets\\Scripts\\BuffSystem\\BuffDataSO.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Unit\\UnitBase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|solutionrelative:Assets\\Scripts\\Unit\\UnitBase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|D:\\Unity\\2D_MAZE\\My project (3)\\assets\\scripts\\unit\\unitstat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\unit\\unitstat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|D:\\Unity\\2D_MAZE\\My project (3)\\assets\\scripts\\projectile\\projectiledataso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\projectile\\projectiledataso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|D:\\Unity\\2D_MAZE\\My project (3)\\assets\\scripts\\faction\\factionbehaviourbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\faction\\factionbehaviourbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|D:\\Unity\\2D_MAZE\\My project (3)\\assets\\scripts\\projectile\\iprojectilemodifier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\projectile\\iprojectilemodifier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|D:\\Unity\\2D_MAZE\\My project (3)\\assets\\scripts\\projectile\\projectileruntimedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\projectile\\projectileruntimedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|D:\\Unity\\2D_MAZE\\My project (3)\\assets\\scripts\\core\\damagecalculator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\core\\damagecalculator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|D:\\Unity\\2D_MAZE\\My project (3)\\assets\\scripts\\core\\utility\\gridmath.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\core\\utility\\gridmath.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|D:\\Unity\\2D_MAZE\\My project (3)\\assets\\scripts\\character\\characterprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\character\\characterprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|D:\\Unity\\2D_MAZE\\My project (3)\\assets\\scripts\\core\\knockbackresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\core\\knockbackresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|D:\\Unity\\2D_MAZE\\My project (3)\\assets\\scripts\\core\\combatconst.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\core\\combatconst.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|D:\\Unity\\2D_MAZE\\My project (3)\\assets\\scripts\\core\\combatresolver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\core\\combatresolver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|D:\\Unity\\2D_MAZE\\My project (3)\\assets\\scripts\\core\\utility\\mathhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27AB3609-15DB-52E3-4D4E-5A489B4C4689}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\core\\utility\\mathhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "BuffManager.cs",
+              "DocumentMoniker": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\BuffSystem\\BuffManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\BuffSystem\\BuffManager.cs",
+              "ToolTip": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\BuffSystem\\BuffManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\BuffSystem\\BuffManager.cs",
+              "ViewState": "AgIAADoCAAAAAAAAAAAAAAIAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-21T14:53:59.906Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BuffBase.cs",
+              "DocumentMoniker": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\BuffSystem\\BuffBase.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\BuffSystem\\BuffBase.cs",
+              "ToolTip": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\BuffSystem\\BuffBase.cs",
+              "RelativeToolTip": "Assets\\Scripts\\BuffSystem\\BuffBase.cs",
+              "ViewState": "AgIAACEBAAAAAAAAAAA4wG8AAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-21T14:53:59.754Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FactionDataSO.cs",
+              "DocumentMoniker": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Faction\\FactionDataSO.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Faction\\FactionDataSO.cs",
+              "ToolTip": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Faction\\FactionDataSO.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Faction\\FactionDataSO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-20T13:36:41.494Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FactionRelationTableSO.cs",
+              "DocumentMoniker": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Faction\\FactionRelationTableSO.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Faction\\FactionRelationTableSO.cs",
+              "ToolTip": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Faction\\FactionRelationTableSO.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Faction\\FactionRelationTableSO.cs",
+              "ViewState": "AgIAAAoBAAAAAAAAAAAAAAIAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-20T13:36:41.482Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UnitResource.cs",
+              "DocumentMoniker": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Unit\\UnitResource.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Unit\\UnitResource.cs",
+              "ToolTip": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Unit\\UnitResource.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Unit\\UnitResource.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAN3SURBVEhL7VRBaxtnEH3zrWw5siy7iSUHKlmlcuRgkVSkqSGXNqZgu2DqJnjXl95y68WgHNqj/0BUfOklBJdCoVk5pIVA4pKD00tJoaWHSBQjxam1TlRtbbO24mRl7UwPsowSaG\u002B9tHm37\u002BO9me\u002B9\u002BRjgFf7zIABYfbwartQq4cXiIu4/uY\u002BtWgWDwUHoJ3RMD3/owvFbyWTSbYmu/XItrHlayOl1rLnknLuwuuDvdfxRT\u002BvYuXTmkt3eQAEAa6yzj00wmxpgQinTU2Sypkzmjmy9qx5rFxFEZ83LBnYDMQA4KJ4liN7OAwAfAHxXvBnZ5/1Ud0c3YsHoSp3r\u002BaG\u002BhLHtbofvrN8mhvjbRcu/L0cAGaJG8/7Wxl2/JpQAEGnnoRXR24tvzQc7gp\u002BdHXjH6uvs\u002BxyadofZy645D89t1Mq2EhjGyY\u002BrlVol/HV\u002BEU/cPz4BZFKEMkpJkUEJgmQhtNzj7/5i5GgaQQTtpdklWwGAVbNQdIrWg60HGUUdZmgnZLEnl0tOMbf5/E9U6lsgiE4KJvvIBGAAFCUlVxhkHhSPATBYyFSAqXzQ0YqoznW4Xt39aePH0vLs3daQiqmrwzmlqKChUSWSggiWpOn7PQhSAH1PgA2hfgAGCHkRvicQkJLCYUSvLfTMi0AnZmM78zTfyu/v8DL/6EJwpOkES9tzu/PtXNV\u002B\u002BDfwjw5SV4fPK0UpDQ1z7synqce16vmvfvsS1b1KMyJCDoANwWFEAV/g3un\u002BNEKdwZXrF26s\u002BACgy9cFjXz\u002B1LFU4t0fxqqVWmUnEopEb6/dmnm6XxsTRSvsqZQi0QkABGEAIYhMCMgliB\u002BgEAQpgoqQAMywAawoAEj2ncSpY6eip/vTVxpo6JFQJMrsZeM9bxhHtACCCAIKJgkbJGw0Xy6WaJQhZkOEMiApg5AjYcNjGHKETLR\u002B0UdDF\u002BE2nvvXnIdDv9o/69auNXJ2YPRcPBQPp8NpW5hwsAJsAJi9qduAuNSQ0jf6jfzMtzOiCbkA7OsXcvkyllspN4c8MThhjw6MFjafbRYeOY8iTt0ZW99dt493Hy9MJ6ZLU8mpwz0EAOOxSXs8/kHp/TcnXQCYen3KnYhPlsZjky/sIbQa\u002BMRnisAQJoNJGZ6QoYgNBowGcaYz3Fl\u002BSWWycGavZ68MAE6vY3nCl6FgvsB7hf8H/gL\u002B2aNVwu31ogAAAABJRU5ErkJggg==",
+              "WhenOpened": "2026-10-21T14:53:59.758Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UnitResource.cs",
+              "DocumentMoniker": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Unit\\UnitResource.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Unit\\UnitResource.cs",
+              "ToolTip": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Unit\\UnitResource.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Unit\\UnitResource.cs",
+              "ViewState": "AgIAAIwAAAAAAAAAAAAUwOIAAAAAAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAN3SURBVEhL7VRBaxtnEH3zrWw5siy7iSUHKlmlcuRgkVSkqSGXNqZgu2DqJnjXl95y68WgHNqj/0BUfOklBJdCoVk5pIVA4pKD00tJoaWHSBQjxam1TlRtbbO24mRl7UwPsowSaG\u002B9tHm37\u002BO9me\u002B9\u002BRjgFf7zIABYfbwartQq4cXiIu4/uY\u002BtWgWDwUHoJ3RMD3/owvFbyWTSbYmu/XItrHlayOl1rLnknLuwuuDvdfxRT\u002BvYuXTmkt3eQAEAa6yzj00wmxpgQinTU2Sypkzmjmy9qx5rFxFEZ83LBnYDMQA4KJ4liN7OAwAfAHxXvBnZ5/1Ud0c3YsHoSp3r\u002BaG\u002BhLHtbofvrN8mhvjbRcu/L0cAGaJG8/7Wxl2/JpQAEGnnoRXR24tvzQc7gp\u002BdHXjH6uvs\u002BxyadofZy645D89t1Mq2EhjGyY\u002BrlVol/HV\u002BEU/cPz4BZFKEMkpJkUEJgmQhtNzj7/5i5GgaQQTtpdklWwGAVbNQdIrWg60HGUUdZmgnZLEnl0tOMbf5/E9U6lsgiE4KJvvIBGAAFCUlVxhkHhSPATBYyFSAqXzQ0YqoznW4Xt39aePH0vLs3daQiqmrwzmlqKChUSWSggiWpOn7PQhSAH1PgA2hfgAGCHkRvicQkJLCYUSvLfTMi0AnZmM78zTfyu/v8DL/6EJwpOkES9tzu/PtXNV\u002B\u002BDfwjw5SV4fPK0UpDQ1z7synqce16vmvfvsS1b1KMyJCDoANwWFEAV/g3un\u002BNEKdwZXrF26s\u002BACgy9cFjXz\u002B1LFU4t0fxqqVWmUnEopEb6/dmnm6XxsTRSvsqZQi0QkABGEAIYhMCMgliB\u002BgEAQpgoqQAMywAawoAEj2ncSpY6eip/vTVxpo6JFQJMrsZeM9bxhHtACCCAIKJgkbJGw0Xy6WaJQhZkOEMiApg5AjYcNjGHKETLR\u002B0UdDF\u002BE2nvvXnIdDv9o/69auNXJ2YPRcPBQPp8NpW5hwsAJsAJi9qduAuNSQ0jf6jfzMtzOiCbkA7OsXcvkyllspN4c8MThhjw6MFjafbRYeOY8iTt0ZW99dt493Hy9MJ6ZLU8mpwz0EAOOxSXs8/kHp/TcnXQCYen3KnYhPlsZjky/sIbQa\u002BMRnisAQJoNJGZ6QoYgNBowGcaYz3Fl\u002BSWWycGavZ68MAE6vY3nCl6FgvsB7hf8H/gL\u002B2aNVwu31ogAAAABJRU5ErkJggg==",
+              "WhenOpened": "2026-10-20T13:36:41.772Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UnitAction.cs",
+              "DocumentMoniker": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Unit\\UnitAction.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Unit\\UnitAction.cs",
+              "ToolTip": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Unit\\UnitAction.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Unit\\UnitAction.cs",
+              "ViewState": "AgIAANUAAAAAAAAAAAAuwOsAAAABAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAN3SURBVEhL7VRBaxtnEH3zrWw5siy7iSUHKlmlcuRgkVSkqSGXNqZgu2DqJnjXl95y68WgHNqj/0BUfOklBJdCoVk5pIVA4pKD00tJoaWHSBQjxam1TlRtbbO24mRl7UwPsowSaG\u002B9tHm37\u002BO9me\u002B9\u002BRjgFf7zIABYfbwartQq4cXiIu4/uY\u002BtWgWDwUHoJ3RMD3/owvFbyWTSbYmu/XItrHlayOl1rLnknLuwuuDvdfxRT\u002BvYuXTmkt3eQAEAa6yzj00wmxpgQinTU2Sypkzmjmy9qx5rFxFEZ83LBnYDMQA4KJ4liN7OAwAfAHxXvBnZ5/1Ud0c3YsHoSp3r\u002BaG\u002BhLHtbofvrN8mhvjbRcu/L0cAGaJG8/7Wxl2/JpQAEGnnoRXR24tvzQc7gp\u002BdHXjH6uvs\u002BxyadofZy645D89t1Mq2EhjGyY\u002BrlVol/HV\u002BEU/cPz4BZFKEMkpJkUEJgmQhtNzj7/5i5GgaQQTtpdklWwGAVbNQdIrWg60HGUUdZmgnZLEnl0tOMbf5/E9U6lsgiE4KJvvIBGAAFCUlVxhkHhSPATBYyFSAqXzQ0YqoznW4Xt39aePH0vLs3daQiqmrwzmlqKChUSWSggiWpOn7PQhSAH1PgA2hfgAGCHkRvicQkJLCYUSvLfTMi0AnZmM78zTfyu/v8DL/6EJwpOkES9tzu/PtXNV\u002B\u002BDfwjw5SV4fPK0UpDQ1z7synqce16vmvfvsS1b1KMyJCDoANwWFEAV/g3un\u002BNEKdwZXrF26s\u002BACgy9cFjXz\u002B1LFU4t0fxqqVWmUnEopEb6/dmnm6XxsTRSvsqZQi0QkABGEAIYhMCMgliB\u002BgEAQpgoqQAMywAawoAEj2ncSpY6eip/vTVxpo6JFQJMrsZeM9bxhHtACCCAIKJgkbJGw0Xy6WaJQhZkOEMiApg5AjYcNjGHKETLR\u002B0UdDF\u002BE2nvvXnIdDv9o/69auNXJ2YPRcPBQPp8NpW5hwsAJsAJi9qduAuNSQ0jf6jfzMtzOiCbkA7OsXcvkyllspN4c8MThhjw6MFjafbRYeOY8iTt0ZW99dt493Hy9MJ6ZLU8mpwz0EAOOxSXs8/kHp/TcnXQCYen3KnYhPlsZjky/sIbQa\u002BMRnisAQJoNJGZ6QoYgNBowGcaYz3Fl\u002BSWWycGavZ68MAE6vY3nCl6FgvsB7hf8H/gL\u002B2aNVwu31ogAAAABJRU5ErkJggg==",
+              "WhenOpened": "2026-10-21T14:14:10.099Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "FactionBonusTableSO.cs",
+              "DocumentMoniker": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Faction\\FactionBonusTableSO.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Faction\\FactionBonusTableSO.cs",
+              "ToolTip": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Faction\\FactionBonusTableSO.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Faction\\FactionBonusTableSO.cs",
+              "ViewState": "AgIAAGAAAAAAAAAAAAAiwHgAAAAFAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAN3SURBVEhL7VRBaxtnEH3zrWw5siy7iSUHKlmlcuRgkVSkqSGXNqZgu2DqJnjXl95y68WgHNqj/0BUfOklBJdCoVk5pIVA4pKD00tJoaWHSBQjxam1TlRtbbO24mRl7UwPsowSaG\u002B9tHm37\u002BO9me\u002B9\u002BRjgFf7zIABYfbwartQq4cXiIu4/uY\u002BtWgWDwUHoJ3RMD3/owvFbyWTSbYmu/XItrHlayOl1rLnknLuwuuDvdfxRT\u002BvYuXTmkt3eQAEAa6yzj00wmxpgQinTU2Sypkzmjmy9qx5rFxFEZ83LBnYDMQA4KJ4liN7OAwAfAHxXvBnZ5/1Ud0c3YsHoSp3r\u002BaG\u002BhLHtbofvrN8mhvjbRcu/L0cAGaJG8/7Wxl2/JpQAEGnnoRXR24tvzQc7gp\u002BdHXjH6uvs\u002BxyadofZy645D89t1Mq2EhjGyY\u002BrlVol/HV\u002BEU/cPz4BZFKEMkpJkUEJgmQhtNzj7/5i5GgaQQTtpdklWwGAVbNQdIrWg60HGUUdZmgnZLEnl0tOMbf5/E9U6lsgiE4KJvvIBGAAFCUlVxhkHhSPATBYyFSAqXzQ0YqoznW4Xt39aePH0vLs3daQiqmrwzmlqKChUSWSggiWpOn7PQhSAH1PgA2hfgAGCHkRvicQkJLCYUSvLfTMi0AnZmM78zTfyu/v8DL/6EJwpOkES9tzu/PtXNV\u002B\u002BDfwjw5SV4fPK0UpDQ1z7synqce16vmvfvsS1b1KMyJCDoANwWFEAV/g3un\u002BNEKdwZXrF26s\u002BACgy9cFjXz\u002B1LFU4t0fxqqVWmUnEopEb6/dmnm6XxsTRSvsqZQi0QkABGEAIYhMCMgliB\u002BgEAQpgoqQAMywAawoAEj2ncSpY6eip/vTVxpo6JFQJMrsZeM9bxhHtACCCAIKJgkbJGw0Xy6WaJQhZkOEMiApg5AjYcNjGHKETLR\u002B0UdDF\u002BE2nvvXnIdDv9o/69auNXJ2YPRcPBQPp8NpW5hwsAJsAJi9qduAuNSQ0jf6jfzMtzOiCbkA7OsXcvkyllspN4c8MThhjw6MFjafbRYeOY8iTt0ZW99dt493Hy9MJ6ZLU8mpwz0EAOOxSXs8/kHp/TcnXQCYen3KnYhPlsZjky/sIbQa\u002BMRnisAQJoNJGZ6QoYgNBowGcaYz3Fl\u002BSWWycGavZ68MAE6vY3nCl6FgvsB7hf8H/gL\u002B2aNVwu31ogAAAABJRU5ErkJggg==",
+              "WhenOpened": "2026-10-20T13:36:41.481Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CharacterDatabaseSO.cs",
+              "DocumentMoniker": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Character\\CharacterDatabaseSO.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Character\\CharacterDatabaseSO.cs",
+              "ToolTip": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Character\\CharacterDatabaseSO.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Character\\CharacterDatabaseSO.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAgwEYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-20T13:36:41.486Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CharacterDataSO.cs",
+              "DocumentMoniker": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Character\\CharacterDataSO.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Character\\CharacterDataSO.cs",
+              "ToolTip": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Character\\CharacterDataSO.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Character\\CharacterDataSO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-20T13:36:41.493Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "CardSkin.cs",
+              "DocumentMoniker": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Card\\CardSkin.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Card\\CardSkin.cs",
+              "ToolTip": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Card\\CardSkin.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Card\\CardSkin.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAABAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAN3SURBVEhL7VRBaxtnEH3zrWw5siy7iSUHKlmlcuRgkVSkqSGXNqZgu2DqJnjXl95y68WgHNqj/0BUfOklBJdCoVk5pIVA4pKD00tJoaWHSBQjxam1TlRtbbO24mRl7UwPsowSaG\u002B9tHm37\u002BO9me\u002B9\u002BRjgFf7zIABYfbwartQq4cXiIu4/uY\u002BtWgWDwUHoJ3RMD3/owvFbyWTSbYmu/XItrHlayOl1rLnknLuwuuDvdfxRT\u002BvYuXTmkt3eQAEAa6yzj00wmxpgQinTU2Sypkzmjmy9qx5rFxFEZ83LBnYDMQA4KJ4liN7OAwAfAHxXvBnZ5/1Ud0c3YsHoSp3r\u002BaG\u002BhLHtbofvrN8mhvjbRcu/L0cAGaJG8/7Wxl2/JpQAEGnnoRXR24tvzQc7gp\u002BdHXjH6uvs\u002BxyadofZy645D89t1Mq2EhjGyY\u002BrlVol/HV\u002BEU/cPz4BZFKEMkpJkUEJgmQhtNzj7/5i5GgaQQTtpdklWwGAVbNQdIrWg60HGUUdZmgnZLEnl0tOMbf5/E9U6lsgiE4KJvvIBGAAFCUlVxhkHhSPATBYyFSAqXzQ0YqoznW4Xt39aePH0vLs3daQiqmrwzmlqKChUSWSggiWpOn7PQhSAH1PgA2hfgAGCHkRvicQkJLCYUSvLfTMi0AnZmM78zTfyu/v8DL/6EJwpOkES9tzu/PtXNV\u002B\u002BDfwjw5SV4fPK0UpDQ1z7synqce16vmvfvsS1b1KMyJCDoANwWFEAV/g3un\u002BNEKdwZXrF26s\u002BACgy9cFjXz\u002B1LFU4t0fxqqVWmUnEopEb6/dmnm6XxsTRSvsqZQi0QkABGEAIYhMCMgliB\u002BgEAQpgoqQAMywAawoAEj2ncSpY6eip/vTVxpo6JFQJMrsZeM9bxhHtACCCAIKJgkbJGw0Xy6WaJQhZkOEMiApg5AjYcNjGHKETLR\u002B0UdDF\u002BE2nvvXnIdDv9o/69auNXJ2YPRcPBQPp8NpW5hwsAJsAJi9qduAuNSQ0jf6jfzMtzOiCbkA7OsXcvkyllspN4c8MThhjw6MFjafbRYeOY8iTt0ZW99dt493Hy9MJ6ZLU8mpwz0EAOOxSXs8/kHp/TcnXQCYen3KnYhPlsZjky/sIbQa\u002BMRnisAQJoNJGZ6QoYgNBowGcaYz3Fl\u002BSWWycGavZ68MAE6vY3nCl6FgvsB7hf8H/gL\u002B2aNVwu31ogAAAABJRU5ErkJggg==",
+              "WhenOpened": "2026-10-20T13:36:41.496Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Enums.cs",
+              "DocumentMoniker": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Core\\Enums.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Core\\Enums.cs",
+              "ToolTip": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Core\\Enums.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Core\\Enums.cs",
+              "ViewState": "AgIAAG4AAAAAAAAAAAAkwNAAAAAEAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAN3SURBVEhL7VRBaxtnEH3zrWw5siy7iSUHKlmlcuRgkVSkqSGXNqZgu2DqJnjXl95y68WgHNqj/0BUfOklBJdCoVk5pIVA4pKD00tJoaWHSBQjxam1TlRtbbO24mRl7UwPsowSaG\u002B9tHm37\u002BO9me\u002B9\u002BRjgFf7zIABYfbwartQq4cXiIu4/uY\u002BtWgWDwUHoJ3RMD3/owvFbyWTSbYmu/XItrHlayOl1rLnknLuwuuDvdfxRT\u002BvYuXTmkt3eQAEAa6yzj00wmxpgQinTU2Sypkzmjmy9qx5rFxFEZ83LBnYDMQA4KJ4liN7OAwAfAHxXvBnZ5/1Ud0c3YsHoSp3r\u002BaG\u002BhLHtbofvrN8mhvjbRcu/L0cAGaJG8/7Wxl2/JpQAEGnnoRXR24tvzQc7gp\u002BdHXjH6uvs\u002BxyadofZy645D89t1Mq2EhjGyY\u002BrlVol/HV\u002BEU/cPz4BZFKEMkpJkUEJgmQhtNzj7/5i5GgaQQTtpdklWwGAVbNQdIrWg60HGUUdZmgnZLEnl0tOMbf5/E9U6lsgiE4KJvvIBGAAFCUlVxhkHhSPATBYyFSAqXzQ0YqoznW4Xt39aePH0vLs3daQiqmrwzmlqKChUSWSggiWpOn7PQhSAH1PgA2hfgAGCHkRvicQkJLCYUSvLfTMi0AnZmM78zTfyu/v8DL/6EJwpOkES9tzu/PtXNV\u002B\u002BDfwjw5SV4fPK0UpDQ1z7synqce16vmvfvsS1b1KMyJCDoANwWFEAV/g3un\u002BNEKdwZXrF26s\u002BACgy9cFjXz\u002B1LFU4t0fxqqVWmUnEopEb6/dmnm6XxsTRSvsqZQi0QkABGEAIYhMCMgliB\u002BgEAQpgoqQAMywAawoAEj2ncSpY6eip/vTVxpo6JFQJMrsZeM9bxhHtACCCAIKJgkbJGw0Xy6WaJQhZkOEMiApg5AjYcNjGHKETLR\u002B0UdDF\u002BE2nvvXnIdDv9o/69auNXJ2YPRcPBQPp8NpW5hwsAJsAJi9qduAuNSQ0jf6jfzMtzOiCbkA7OsXcvkyllspN4c8MThhjw6MFjafbRYeOY8iTt0ZW99dt493Hy9MJ6ZLU8mpwz0EAOOxSXs8/kHp/TcnXQCYen3KnYhPlsZjky/sIbQa\u002BMRnisAQJoNJGZ6QoYgNBowGcaYz3Fl\u002BSWWycGavZ68MAE6vY3nCl6FgvsB7hf8H/gL\u002B2aNVwu31ogAAAABJRU5ErkJggg==",
+              "WhenOpened": "2026-10-20T13:36:41.497Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "CardActionData.cs",
+              "DocumentMoniker": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Card\\CardActionData.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Card\\CardActionData.cs",
+              "ToolTip": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Card\\CardActionData.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Card\\CardActionData.cs",
+              "ViewState": "AgIAAJwAAAAAAAAAAAAAANIAAAABAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAN3SURBVEhL7VRBaxtnEH3zrWw5siy7iSUHKlmlcuRgkVSkqSGXNqZgu2DqJnjXl95y68WgHNqj/0BUfOklBJdCoVk5pIVA4pKD00tJoaWHSBQjxam1TlRtbbO24mRl7UwPsowSaG\u002B9tHm37\u002BO9me\u002B9\u002BRjgFf7zIABYfbwartQq4cXiIu4/uY\u002BtWgWDwUHoJ3RMD3/owvFbyWTSbYmu/XItrHlayOl1rLnknLuwuuDvdfxRT\u002BvYuXTmkt3eQAEAa6yzj00wmxpgQinTU2Sypkzmjmy9qx5rFxFEZ83LBnYDMQA4KJ4liN7OAwAfAHxXvBnZ5/1Ud0c3YsHoSp3r\u002BaG\u002BhLHtbofvrN8mhvjbRcu/L0cAGaJG8/7Wxl2/JpQAEGnnoRXR24tvzQc7gp\u002BdHXjH6uvs\u002BxyadofZy645D89t1Mq2EhjGyY\u002BrlVol/HV\u002BEU/cPz4BZFKEMkpJkUEJgmQhtNzj7/5i5GgaQQTtpdklWwGAVbNQdIrWg60HGUUdZmgnZLEnl0tOMbf5/E9U6lsgiE4KJvvIBGAAFCUlVxhkHhSPATBYyFSAqXzQ0YqoznW4Xt39aePH0vLs3daQiqmrwzmlqKChUSWSggiWpOn7PQhSAH1PgA2hfgAGCHkRvicQkJLCYUSvLfTMi0AnZmM78zTfyu/v8DL/6EJwpOkES9tzu/PtXNV\u002B\u002BDfwjw5SV4fPK0UpDQ1z7synqce16vmvfvsS1b1KMyJCDoANwWFEAV/g3un\u002BNEKdwZXrF26s\u002BACgy9cFjXz\u002B1LFU4t0fxqqVWmUnEopEb6/dmnm6XxsTRSvsqZQi0QkABGEAIYhMCMgliB\u002BgEAQpgoqQAMywAawoAEj2ncSpY6eip/vTVxpo6JFQJMrsZeM9bxhHtACCCAIKJgkbJGw0Xy6WaJQhZkOEMiApg5AjYcNjGHKETLR\u002B0UdDF\u002BE2nvvXnIdDv9o/69auNXJ2YPRcPBQPp8NpW5hwsAJsAJi9qduAuNSQ0jf6jfzMtzOiCbkA7OsXcvkyllspN4c8MThhjw6MFjafbRYeOY8iTt0ZW99dt493Hy9MJ6ZLU8mpwz0EAOOxSXs8/kHp/TcnXQCYen3KnYhPlsZjky/sIbQa\u002BMRnisAQJoNJGZ6QoYgNBowGcaYz3Fl\u002BSWWycGavZ68MAE6vY3nCl6FgvsB7hf8H/gL\u002B2aNVwu31ogAAAABJRU5ErkJggg==",
+              "WhenOpened": "2026-10-20T13:36:41.508Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "CardDataSO.cs",
+              "DocumentMoniker": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Card\\CardDataSO.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Card\\CardDataSO.cs",
+              "ToolTip": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Card\\CardDataSO.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Card\\CardDataSO.cs",
+              "ViewState": "AgIAAI4BAAAAAAAAAAAAwLEBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-20T13:36:41.509Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "CardView.cs",
+              "DocumentMoniker": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Card\\CardView.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Card\\CardView.cs",
+              "ToolTip": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Card\\CardView.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Card\\CardView.cs",
+              "ViewState": "AgIAAJsAAAAAAAAAAAAmwKsAAAABAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAN3SURBVEhL7VRBaxtnEH3zrWw5siy7iSUHKlmlcuRgkVSkqSGXNqZgu2DqJnjXl95y68WgHNqj/0BUfOklBJdCoVk5pIVA4pKD00tJoaWHSBQjxam1TlRtbbO24mRl7UwPsowSaG\u002B9tHm37\u002BO9me\u002B9\u002BRjgFf7zIABYfbwartQq4cXiIu4/uY\u002BtWgWDwUHoJ3RMD3/owvFbyWTSbYmu/XItrHlayOl1rLnknLuwuuDvdfxRT\u002BvYuXTmkt3eQAEAa6yzj00wmxpgQinTU2Sypkzmjmy9qx5rFxFEZ83LBnYDMQA4KJ4liN7OAwAfAHxXvBnZ5/1Ud0c3YsHoSp3r\u002BaG\u002BhLHtbofvrN8mhvjbRcu/L0cAGaJG8/7Wxl2/JpQAEGnnoRXR24tvzQc7gp\u002BdHXjH6uvs\u002BxyadofZy645D89t1Mq2EhjGyY\u002BrlVol/HV\u002BEU/cPz4BZFKEMkpJkUEJgmQhtNzj7/5i5GgaQQTtpdklWwGAVbNQdIrWg60HGUUdZmgnZLEnl0tOMbf5/E9U6lsgiE4KJvvIBGAAFCUlVxhkHhSPATBYyFSAqXzQ0YqoznW4Xt39aePH0vLs3daQiqmrwzmlqKChUSWSggiWpOn7PQhSAH1PgA2hfgAGCHkRvicQkJLCYUSvLfTMi0AnZmM78zTfyu/v8DL/6EJwpOkES9tzu/PtXNV\u002B\u002BDfwjw5SV4fPK0UpDQ1z7synqce16vmvfvsS1b1KMyJCDoANwWFEAV/g3un\u002BNEKdwZXrF26s\u002BACgy9cFjXz\u002B1LFU4t0fxqqVWmUnEopEb6/dmnm6XxsTRSvsqZQi0QkABGEAIYhMCMgliB\u002BgEAQpgoqQAMywAawoAEj2ncSpY6eip/vTVxpo6JFQJMrsZeM9bxhHtACCCAIKJgkbJGw0Xy6WaJQhZkOEMiApg5AjYcNjGHKETLR\u002B0UdDF\u002BE2nvvXnIdDv9o/69auNXJ2YPRcPBQPp8NpW5hwsAJsAJi9qduAuNSQ0jf6jfzMtzOiCbkA7OsXcvkyllspN4c8MThhjw6MFjafbRYeOY8iTt0ZW99dt493Hy9MJ6ZLU8mpwz0EAOOxSXs8/kHp/TcnXQCYen3KnYhPlsZjky/sIbQa\u002BMRnisAQJoNJGZ6QoYgNBowGcaYz3Fl\u002BSWWycGavZ68MAE6vY3nCl6FgvsB7hf8H/gL\u002B2aNVwu31ogAAAABJRU5ErkJggg==",
+              "WhenOpened": "2026-10-20T13:36:41.511Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "CardFrameTableSO.cs",
+              "DocumentMoniker": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Card\\CardFrameTableSO.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Card\\CardFrameTableSO.cs",
+              "ToolTip": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Card\\CardFrameTableSO.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Card\\CardFrameTableSO.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAACgAAAAlAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAN3SURBVEhL7VRBaxtnEH3zrWw5siy7iSUHKlmlcuRgkVSkqSGXNqZgu2DqJnjXl95y68WgHNqj/0BUfOklBJdCoVk5pIVA4pKD00tJoaWHSBQjxam1TlRtbbO24mRl7UwPsowSaG\u002B9tHm37\u002BO9me\u002B9\u002BRjgFf7zIABYfbwartQq4cXiIu4/uY\u002BtWgWDwUHoJ3RMD3/owvFbyWTSbYmu/XItrHlayOl1rLnknLuwuuDvdfxRT\u002BvYuXTmkt3eQAEAa6yzj00wmxpgQinTU2Sypkzmjmy9qx5rFxFEZ83LBnYDMQA4KJ4liN7OAwAfAHxXvBnZ5/1Ud0c3YsHoSp3r\u002BaG\u002BhLHtbofvrN8mhvjbRcu/L0cAGaJG8/7Wxl2/JpQAEGnnoRXR24tvzQc7gp\u002BdHXjH6uvs\u002BxyadofZy645D89t1Mq2EhjGyY\u002BrlVol/HV\u002BEU/cPz4BZFKEMkpJkUEJgmQhtNzj7/5i5GgaQQTtpdklWwGAVbNQdIrWg60HGUUdZmgnZLEnl0tOMbf5/E9U6lsgiE4KJvvIBGAAFCUlVxhkHhSPATBYyFSAqXzQ0YqoznW4Xt39aePH0vLs3daQiqmrwzmlqKChUSWSggiWpOn7PQhSAH1PgA2hfgAGCHkRvicQkJLCYUSvLfTMi0AnZmM78zTfyu/v8DL/6EJwpOkES9tzu/PtXNV\u002B\u002BDfwjw5SV4fPK0UpDQ1z7synqce16vmvfvsS1b1KMyJCDoANwWFEAV/g3un\u002BNEKdwZXrF26s\u002BACgy9cFjXz\u002B1LFU4t0fxqqVWmUnEopEb6/dmnm6XxsTRSvsqZQi0QkABGEAIYhMCMgliB\u002BgEAQpgoqQAMywAawoAEj2ncSpY6eip/vTVxpo6JFQJMrsZeM9bxhHtACCCAIKJgkbJGw0Xy6WaJQhZkOEMiApg5AjYcNjGHKETLR\u002B0UdDF\u002BE2nvvXnIdDv9o/69auNXJ2YPRcPBQPp8NpW5hwsAJsAJi9qduAuNSQ0jf6jfzMtzOiCbkA7OsXcvkyllspN4c8MThhjw6MFjafbRYeOY8iTt0ZW99dt493Hy9MJ6ZLU8mpwz0EAOOxSXs8/kHp/TcnXQCYen3KnYhPlsZjky/sIbQa\u002BMRnisAQJoNJGZ6QoYgNBowGcaYz3Fl\u002BSWWycGavZ68MAE6vY3nCl6FgvsB7hf8H/gL\u002B2aNVwu31ogAAAABJRU5ErkJggg==",
+              "WhenOpened": "2026-10-20T13:36:41.512Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "UnitBase.cs",
+              "DocumentMoniker": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Unit\\UnitBase.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Unit\\UnitBase.cs",
+              "ToolTip": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Unit\\UnitBase.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Unit\\UnitBase.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAuwAkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-20T13:36:41.513Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "UnitStat.cs",
+              "DocumentMoniker": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Unit\\UnitStat.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Unit\\UnitStat.cs",
+              "ToolTip": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Unit\\UnitStat.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Unit\\UnitStat.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAAUwDUAAAABAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAN3SURBVEhL7VRBaxtnEH3zrWw5siy7iSUHKlmlcuRgkVSkqSGXNqZgu2DqJnjXl95y68WgHNqj/0BUfOklBJdCoVk5pIVA4pKD00tJoaWHSBQjxam1TlRtbbO24mRl7UwPsowSaG\u002B9tHm37\u002BO9me\u002B9\u002BRjgFf7zIABYfbwartQq4cXiIu4/uY\u002BtWgWDwUHoJ3RMD3/owvFbyWTSbYmu/XItrHlayOl1rLnknLuwuuDvdfxRT\u002BvYuXTmkt3eQAEAa6yzj00wmxpgQinTU2Sypkzmjmy9qx5rFxFEZ83LBnYDMQA4KJ4liN7OAwAfAHxXvBnZ5/1Ud0c3YsHoSp3r\u002BaG\u002BhLHtbofvrN8mhvjbRcu/L0cAGaJG8/7Wxl2/JpQAEGnnoRXR24tvzQc7gp\u002BdHXjH6uvs\u002BxyadofZy645D89t1Mq2EhjGyY\u002BrlVol/HV\u002BEU/cPz4BZFKEMkpJkUEJgmQhtNzj7/5i5GgaQQTtpdklWwGAVbNQdIrWg60HGUUdZmgnZLEnl0tOMbf5/E9U6lsgiE4KJvvIBGAAFCUlVxhkHhSPATBYyFSAqXzQ0YqoznW4Xt39aePH0vLs3daQiqmrwzmlqKChUSWSggiWpOn7PQhSAH1PgA2hfgAGCHkRvicQkJLCYUSvLfTMi0AnZmM78zTfyu/v8DL/6EJwpOkES9tzu/PtXNV\u002B\u002BDfwjw5SV4fPK0UpDQ1z7synqce16vmvfvsS1b1KMyJCDoANwWFEAV/g3un\u002BNEKdwZXrF26s\u002BACgy9cFjXz\u002B1LFU4t0fxqqVWmUnEopEb6/dmnm6XxsTRSvsqZQi0QkABGEAIYhMCMgliB\u002BgEAQpgoqQAMywAawoAEj2ncSpY6eip/vTVxpo6JFQJMrsZeM9bxhHtACCCAIKJgkbJGw0Xy6WaJQhZkOEMiApg5AjYcNjGHKETLR\u002B0UdDF\u002BE2nvvXnIdDv9o/69auNXJ2YPRcPBQPp8NpW5hwsAJsAJi9qduAuNSQ0jf6jfzMtzOiCbkA7OsXcvkyllspN4c8MThhjw6MFjafbRYeOY8iTt0ZW99dt493Hy9MJ6ZLU8mpwz0EAOOxSXs8/kHp/TcnXQCYen3KnYhPlsZjky/sIbQa\u002BMRnisAQJoNJGZ6QoYgNBowGcaYz3Fl\u002BSWWycGavZ68MAE6vY3nCl6FgvsB7hf8H/gL\u002B2aNVwu31ogAAAABJRU5ErkJggg==",
+              "WhenOpened": "2026-10-20T13:36:41.514Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "BuffDataSO.cs",
+              "DocumentMoniker": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\BuffSystem\\BuffDataSO.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\BuffSystem\\BuffDataSO.cs",
+              "ToolTip": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\BuffSystem\\BuffDataSO.cs",
+              "RelativeToolTip": "Assets\\Scripts\\BuffSystem\\BuffDataSO.cs",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAgwFQAAAAeAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAN3SURBVEhL7VRBaxtnEH3zrWw5siy7iSUHKlmlcuRgkVSkqSGXNqZgu2DqJnjXl95y68WgHNqj/0BUfOklBJdCoVk5pIVA4pKD00tJoaWHSBQjxam1TlRtbbO24mRl7UwPsowSaG\u002B9tHm37\u002BO9me\u002B9\u002BRjgFf7zIABYfbwartQq4cXiIu4/uY\u002BtWgWDwUHoJ3RMD3/owvFbyWTSbYmu/XItrHlayOl1rLnknLuwuuDvdfxRT\u002BvYuXTmkt3eQAEAa6yzj00wmxpgQinTU2Sypkzmjmy9qx5rFxFEZ83LBnYDMQA4KJ4liN7OAwAfAHxXvBnZ5/1Ud0c3YsHoSp3r\u002BaG\u002BhLHtbofvrN8mhvjbRcu/L0cAGaJG8/7Wxl2/JpQAEGnnoRXR24tvzQc7gp\u002BdHXjH6uvs\u002BxyadofZy645D89t1Mq2EhjGyY\u002BrlVol/HV\u002BEU/cPz4BZFKEMkpJkUEJgmQhtNzj7/5i5GgaQQTtpdklWwGAVbNQdIrWg60HGUUdZmgnZLEnl0tOMbf5/E9U6lsgiE4KJvvIBGAAFCUlVxhkHhSPATBYyFSAqXzQ0YqoznW4Xt39aePH0vLs3daQiqmrwzmlqKChUSWSggiWpOn7PQhSAH1PgA2hfgAGCHkRvicQkJLCYUSvLfTMi0AnZmM78zTfyu/v8DL/6EJwpOkES9tzu/PtXNV\u002B\u002BDfwjw5SV4fPK0UpDQ1z7synqce16vmvfvsS1b1KMyJCDoANwWFEAV/g3un\u002BNEKdwZXrF26s\u002BACgy9cFjXz\u002B1LFU4t0fxqqVWmUnEopEb6/dmnm6XxsTRSvsqZQi0QkABGEAIYhMCMgliB\u002BgEAQpgoqQAMywAawoAEj2ncSpY6eip/vTVxpo6JFQJMrsZeM9bxhHtACCCAIKJgkbJGw0Xy6WaJQhZkOEMiApg5AjYcNjGHKETLR\u002B0UdDF\u002BE2nvvXnIdDv9o/69auNXJ2YPRcPBQPp8NpW5hwsAJsAJi9qduAuNSQ0jf6jfzMtzOiCbkA7OsXcvkyllspN4c8MThhjw6MFjafbRYeOY8iTt0ZW99dt493Hy9MJ6ZLU8mpwz0EAOOxSXs8/kHp/TcnXQCYen3KnYhPlsZjky/sIbQa\u002BMRnisAQJoNJGZ6QoYgNBowGcaYz3Fl\u002BSWWycGavZ68MAE6vY3nCl6FgvsB7hf8H/gL\u002B2aNVwu31ogAAAABJRU5ErkJggg==",
+              "WhenOpened": "2026-10-20T13:36:41.515Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "IUnitContext.cs",
+              "DocumentMoniker": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\BuffSystem\\IUnitContext.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\BuffSystem\\IUnitContext.cs",
+              "ToolTip": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\BuffSystem\\IUnitContext.cs",
+              "RelativeToolTip": "Assets\\Scripts\\BuffSystem\\IUnitContext.cs",
+              "ViewState": "AgIAAF0AAAAAAAAAAAAiwEoAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-20T13:36:41.515Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "IProjectileModifier.cs",
+              "DocumentMoniker": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Projectile\\IProjectileModifier.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Projectile\\IProjectileModifier.cs",
+              "ToolTip": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Projectile\\IProjectileModifier.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Projectile\\IProjectileModifier.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-20T13:36:41.515Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "FactionBehaviourBase.cs",
+              "DocumentMoniker": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Faction\\FactionBehaviourBase.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Faction\\FactionBehaviourBase.cs",
+              "ToolTip": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Faction\\FactionBehaviourBase.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Faction\\FactionBehaviourBase.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-20T13:36:41.516Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "ProjectileDataSO.cs",
+              "DocumentMoniker": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Projectile\\ProjectileDataSO.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Projectile\\ProjectileDataSO.cs",
+              "ToolTip": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Projectile\\ProjectileDataSO.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Projectile\\ProjectileDataSO.cs",
+              "ViewState": "AgIAAF8AAAAAAAAAAAAgwA0AAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-20T13:36:41.517Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "DamageCalculator.cs",
+              "DocumentMoniker": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Core\\DamageCalculator.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Core\\DamageCalculator.cs",
+              "ToolTip": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Core\\DamageCalculator.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Core\\DamageCalculator.cs",
+              "ViewState": "AgIAAEQBAAAAAAAAAAAuwGYBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-20T13:36:41.518Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "ProjectileRuntimeData.cs",
+              "DocumentMoniker": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Projectile\\ProjectileRuntimeData.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Projectile\\ProjectileRuntimeData.cs",
+              "ToolTip": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Projectile\\ProjectileRuntimeData.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Projectile\\ProjectileRuntimeData.cs",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAiwF8AAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-20T13:36:41.52Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "CharacterProfile.cs",
+              "DocumentMoniker": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Character\\CharacterProfile.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Character\\CharacterProfile.cs",
+              "ToolTip": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Character\\CharacterProfile.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Character\\CharacterProfile.cs",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAIwHAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-20T13:36:41.521Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "GridMath.cs",
+              "DocumentMoniker": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Core\\Utility\\GridMath.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Core\\Utility\\GridMath.cs",
+              "ToolTip": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Core\\Utility\\GridMath.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Core\\Utility\\GridMath.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAAAswFMAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-20T13:36:41.522Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "KnockbackResult.cs",
+              "DocumentMoniker": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Core\\KnockbackResult.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Core\\KnockbackResult.cs",
+              "ToolTip": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Core\\KnockbackResult.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Core\\KnockbackResult.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAAwDUAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-20T13:36:41.522Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "CombatConst.cs",
+              "DocumentMoniker": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Core\\CombatConst.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Core\\CombatConst.cs",
+              "ToolTip": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Core\\CombatConst.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Core\\CombatConst.cs",
+              "ViewState": "AgIAAN8AAAAAAAAAAAAQwAMBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-20T13:36:41.523Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "CombatResolver.cs",
+              "DocumentMoniker": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Core\\CombatResolver.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Core\\CombatResolver.cs",
+              "ToolTip": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Core\\CombatResolver.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Core\\CombatResolver.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAhAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAN3SURBVEhL7VRBaxtnEH3zrWw5siy7iSUHKlmlcuRgkVSkqSGXNqZgu2DqJnjXl95y68WgHNqj/0BUfOklBJdCoVk5pIVA4pKD00tJoaWHSBQjxam1TlRtbbO24mRl7UwPsowSaG\u002B9tHm37\u002BO9me\u002B9\u002BRjgFf7zIABYfbwartQq4cXiIu4/uY\u002BtWgWDwUHoJ3RMD3/owvFbyWTSbYmu/XItrHlayOl1rLnknLuwuuDvdfxRT\u002BvYuXTmkt3eQAEAa6yzj00wmxpgQinTU2Sypkzmjmy9qx5rFxFEZ83LBnYDMQA4KJ4liN7OAwAfAHxXvBnZ5/1Ud0c3YsHoSp3r\u002BaG\u002BhLHtbofvrN8mhvjbRcu/L0cAGaJG8/7Wxl2/JpQAEGnnoRXR24tvzQc7gp\u002BdHXjH6uvs\u002BxyadofZy645D89t1Mq2EhjGyY\u002BrlVol/HV\u002BEU/cPz4BZFKEMkpJkUEJgmQhtNzj7/5i5GgaQQTtpdklWwGAVbNQdIrWg60HGUUdZmgnZLEnl0tOMbf5/E9U6lsgiE4KJvvIBGAAFCUlVxhkHhSPATBYyFSAqXzQ0YqoznW4Xt39aePH0vLs3daQiqmrwzmlqKChUSWSggiWpOn7PQhSAH1PgA2hfgAGCHkRvicQkJLCYUSvLfTMi0AnZmM78zTfyu/v8DL/6EJwpOkES9tzu/PtXNV\u002B\u002BDfwjw5SV4fPK0UpDQ1z7synqce16vmvfvsS1b1KMyJCDoANwWFEAV/g3un\u002BNEKdwZXrF26s\u002BACgy9cFjXz\u002B1LFU4t0fxqqVWmUnEopEb6/dmnm6XxsTRSvsqZQi0QkABGEAIYhMCMgliB\u002BgEAQpgoqQAMywAawoAEj2ncSpY6eip/vTVxpo6JFQJMrsZeM9bxhHtACCCAIKJgkbJGw0Xy6WaJQhZkOEMiApg5AjYcNjGHKETLR\u002B0UdDF\u002BE2nvvXnIdDv9o/69auNXJ2YPRcPBQPp8NpW5hwsAJsAJi9qduAuNSQ0jf6jfzMtzOiCbkA7OsXcvkyllspN4c8MThhjw6MFjafbRYeOY8iTt0ZW99dt493Hy9MJ6ZLU8mpwz0EAOOxSXs8/kHp/TcnXQCYen3KnYhPlsZjky/sIbQa\u002BMRnisAQJoNJGZ6QoYgNBowGcaYz3Fl\u002BSWWycGavZ68MAE6vY3nCl6FgvsB7hf8H/gL\u002B2aNVwu31ogAAAABJRU5ErkJggg==",
+              "WhenOpened": "2026-10-20T13:36:41.523Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "MathHelper.cs",
+              "DocumentMoniker": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Core\\Utility\\MathHelper.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Core\\Utility\\MathHelper.cs",
+              "ToolTip": "D:\\Unity\\2D_MAZE\\My project (3)\\Assets\\Scripts\\Core\\Utility\\MathHelper.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Core\\Utility\\MathHelper.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAQwBQAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-20T13:36:41.524Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

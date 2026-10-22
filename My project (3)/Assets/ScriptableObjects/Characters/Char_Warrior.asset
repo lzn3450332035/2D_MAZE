@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 806513640e6e9504086de5b53c7f713a, type: 3}
+  m_Name: Char_Warrior
+  m_EditorClassIdentifier: 
+  characterId: 
+  characterName: 
+  description: 
+  portrait: {fileID: 0}
+  prefab: {fileID: 0}
+  unitSize: 1
+  faction: {fileID: 0}
+  baseMaxHp: 100
+  baseDefense: 0
+  basePhysicalAtk: 10
+  baseMagicAtk: 0
+  baseElementResist: 0
+  baseDelayDamageResist: 0
+  baseControlResistPoint: 0
+  baseKnockbackResist: 0
+  baseCritRatePoint: 0
+  baseCritDamagePoint: 0
+  baseSpeed: 10
+  growMaxHp: 0
+  growDefense: 0
+  growPhysicalAtk: 0
+  growMagicAtk: 0
+  growElementResist: 0
+  growDelayDamageResist: 0
+  growControlResistPoint: 0
+  growKnockbackResist: 0
+  growCritRatePoint: 0
+  growCritDamagePoint: 0
+  growSpeed: 0
+  maxLevel: 999
+  expBase: 100
+  expGrowthPerLevel: 50
+  initialEnergy: 10
+  maxEnergy: 10
+  energyRegenPerTurn: 2
+  initialStamina: 5
+  maxStamina: 10
+  staminaRegenPerTurn: 3
+  initialReviveCount: 1
+  starterDeck: []

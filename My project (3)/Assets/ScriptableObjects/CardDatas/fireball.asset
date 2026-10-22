@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b7317b230880c84cafd13650a960676, type: 3}
+  m_Name: fireball
+  m_EditorClassIdentifier: 
+  cardId: fireball
+  cardName: "\u706B\u7130\u5F39"
+  description: "\u53D1\u5C04\u4E00\u679A\u706B\u7130\u5F39"
+  rarity: 0
+  level: 1
+  staminaCost: 1
+  energyCost: 2
+  cardSkin: {fileID: 11400000, guid: 612a5bb068ed4bb44b728aa6b3d93481, type: 2}
+  actions:
+  - type: 1
+    element: 2
+    faction: 0
+    selectMode: 0
+    selectCount: 1
+    aoeShape: 0
+    aoeDirection: 0
+    aoeSize: 1
+    damagePercent: 1
+    canCrit: 1
+    critRatePoint: 20
+    critDamagePoint: 0
+    knockbackChance: 0
+    knockbackGrids: 0
+    stunCoeff: 0
+    projectileTemplate: {fileID: 11400000, guid: 9f92c82bd0cc1894aa99510562e32de1, type: 2}
+    projectileCount: 1
+    bounceCount: 0
+    pierceCount: 0
+    splitCount: 0
+    chainCount: 0
+    chainRange: 0
+    applyBuff: {fileID: 11400000, guid: aca9d10c884b15b469e048cb9d350cd9, type: 2}
+    applyBuffChance: 0.45
+    applyBuffStacks: 1
+    buffDurationOverride: 5
+    blockCount: 0
+    shieldStacks: 0
+    moveDirection: 0
+    moveGrids: 0
+    healPercent: 0
+    drawCount: 0
+    purgeTarget: 0
+  upgradeEntries:
+  - target: 2
+    actionIndex: 0
+    deltaPerLevel: 0.3
+  baseDrawCount: 0
+  isOneTime: 0
